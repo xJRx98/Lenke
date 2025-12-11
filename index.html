@@ -733,8 +733,10 @@
     <!-- HERO -->
     <section class="hero" aria-label="London Hero">
       <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/_U1up-tK9w8?autoplay=1&mute=1&controls=0&loop=1&playlist=_U1up-tK9w8&playsinline=1&rel=0&modestbranding=1"
-                allow="autoplay; encrypted-media" frameborder="0" title="London Video"></iframe>
+        <iframe id="londonVideo" 
+        src="https://www.youtube.com/embed/_U1up-tK9w8?autoplay=1&mute=1&controls=0&loop=1&playlist=_U1up-tK9w8&playsinline=1&rel=0&modestbranding=1"
+        allow="autoplay; encrypted-media" frameborder="0" title="London Video"></iframe>
+
       </div>
 
     
@@ -1224,10 +1226,44 @@
       }, 500);
     }
   }
+
+function openModal(id){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = 'flex';
+  el.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = 'none';
+  el.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+
+function saveCustom(){
+  var txt = document.getElementById('customText').value;
+  alert('Danke — deine Notiz wurde (temporär) gespeichert: "'+ (txt||'[leer]') +'"');
+  closeModal('customModal');
+}
+
+// ESC-Taste zum Schließen aller Modals
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    ['flightModal','stayModal','packing','customModal'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.style.display === 'flex') closeModal(id);
+    })
+  }
+});
+
 </script>
 
 </body>
 </html>
+
 
 
 
