@@ -698,6 +698,10 @@
 <body>
   <div class="page">
 
+    <h1 style="text-align:center; color:var(--gold); font-size:clamp(28px,5vw,36px); margin-bottom:16px;">
+      London 2026
+    </h1>
+
     <!-- HERO -->
     <section class="hero" aria-label="London Hero">
       <div class="video-wrap">
@@ -716,7 +720,7 @@
       <div class="cta-section">
         <div class="cta-row">
           <button class="btn primary" onclick="openModal('flightModal')">✈️ Flugdetails</button>
-          <button class="btn primary" onclick="openModal('stayModal')">🏨 Unterkunft</button>
+          <button class="btn secondary" onclick="openModal('stayModal')">🏨 Unterkunft</button>
           
         </div>
       </div>
@@ -735,7 +739,7 @@
         </ul>
 
         <div style="margin-top:16px; display:flex; gap:8px; flex-wrap:wrap">
-          <button class="btn secondary" onclick="openModal('packing')" style="flex:1; min-width:120px">🧳 Packliste</button>
+          <button class="btn secondary" onclick="openModal('packing')" style="flex:1; min-width:120px">📋 Reisecheckliste</button>
           <a class="btn ghost" href="https://www.visitlondon.com" target="_blank" style="flex:1; min-width:120px">🔍 Mehr</a>
         </div>
       </aside>
@@ -1145,11 +1149,12 @@
   <div id="packing" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal">
       <button class="close" onclick="closeModal('packing')">✕</button>
-      <h3>Packliste</h3>
+      <h3>Reisecheckliste</h3>
       <ul style="margin-top:8px">
         <li>Reisepass + Personalausweis</li>
         <li>UK-Stecker Adapter</li>
-        <li>Leichte Regenjacke & bequeme Schuhe</li>
+        <li>Electronic Travel Authorisation (ETA)</li>
+        <li>Krankenversicherungsnachweis</li>
       </ul>
       <div class="actions">
         <button class="btn primary" onclick="closeModal('packing')">OK</button>
@@ -1376,6 +1381,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
