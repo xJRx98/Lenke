@@ -63,6 +63,25 @@
       padding-bottom:65%;
       background:linear-gradient(180deg,#1a1a1a,#0f0f0f);
     }
+
+    #londonImage{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border:0;
+  opacity:0;
+  transition:opacity 600ms ease, transform 600ms ease;
+  transform:scale(1.02);
+  z-index:5; /* iframe default 0; .overlay bleibt über dem Bild (falls .overlay z-index höher ist) */
+  pointer-events:none; /* Bild nicht klickbar, erlaubt Interaktionen mit darüberliegenden Elementen */
+  background-color:#000;
+}
+
+/* falls .overlay noch keinen z-index hat, stell sicher, dass sie über dem Bild liegt */
+.overlay{ z-index:10; }
+    
     @media(min-width:768px){
       .video-wrap{padding-bottom:56%;}
     }
@@ -682,11 +701,14 @@
     <!-- HERO -->
     <section class="hero" aria-label="London Hero">
       <div class="video-wrap">
-        <iframe id="londonVideo" 
-        src="https://www.youtube.com/embed/_U1up-tK9w8?autoplay=1&mute=1&controls=0&loop=1&playlist=_U1up-tK9w8&playsinline=1&rel=0&modestbranding=1"
-        allow="autoplay; encrypted-media" frameborder="0" title="London Video"></iframe>
+  <iframe id="londonVideo"
+    src="https://www.youtube.com/embed/_U1up-tK9w8?autoplay=1&mute=1&controls=0&loop=1&playlist=_U1up-tK9w8&playsinline=1&rel=0&modestbranding=1"
+    allow="autoplay; encrypted-media" frameborder="0" title="London Video"></iframe>
 
-      </div>
+  <!-- Overlay-Bild: erscheint nach 35s / wenn Video pausiert -->
+  <img id="londonImage" alt="London City" src="" aria-hidden="true" />
+</div>
+
 
     
       
@@ -1194,19 +1216,40 @@
   }
 
   function showImage() {
-    videoEnded = true;
-    var video = document.getElementById('londonVideo');
-    var image = document.getElementById('londonImage');
+  // guard: nur einmal ausführen
+  if (videoEnded) return;
+  videoEnded = true;
 
-    if (video && image) {
-      image.style.opacity = '1';
-      image.style.zIndex = '10';
+  var video = document.getElementById('londonVideo');
+  var image = document.getElementById('londonImage');
 
-      setTimeout(function() {
-        video.style.opacity = '0';
-      }, 500);
+  if (!image) return;
+
+  // Setze das Bild (lokaler Pfad)
+  image.src = './assets/images/London-City.jpg';
+
+  // aria-hidden false wenn du willst, ansonsten hidden (opt.)
+  image.setAttribute('aria-hidden', 'false');
+
+  // Force reflow falls notwendig bevor Transition
+  void image.offsetWidth;
+
+  // sanft einblenden und small scale->normal
+  image.style.opacity = '1';
+  image.style.transform = 'scale(1)';
+
+  // optional: Video pausieren (falls noch läuft)
+  try {
+    if (player && typeof player.pauseVideo === 'function') {
+      player.pauseVideo();
+    } else if (video && !video.paused) {
+      video.pause && video.pause();
     }
+  } catch (e) {
+    console.warn('Pause failed', e);
   }
+}
+
 
 function openModal(id){
   var el = document.getElementById(id);
@@ -1335,3 +1378,4 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
