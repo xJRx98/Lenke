@@ -827,8 +827,8 @@
   const galleryImage = document.getElementById('galleryImage');
 
   function showImage(index) {
-    // Cache umgehen mit unique query param
-    galleryImage.src = galleryPhotos[index] + '&' + new Date().getTime();
+    // Cache umgehen: ?random= verwenden
+    galleryImage.src = galleryPhotos[index] + '?random=' + new Date().getTime();
   }
 
   showImage(currentIndex);
@@ -1468,6 +1468,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
