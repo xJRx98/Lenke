@@ -64,6 +64,39 @@
       background:linear-gradient(180deg,#1a1a1a,#0f0f0f);
     }
 
+    .gallery-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  #galleryImage {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+  }
+
+  .nav {
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+
+  .nav:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+
     #londonImage{
   position:absolute;
   inset:0;
@@ -735,6 +768,7 @@
           <li><span>Reiseziel</span><strong>London, UK</strong></li>
           <li><span>Reisedauer</span><strong>30.03.2026 - 04.04.2026</strong></li>
           <li><span>Abflughafen</span><strong>MUC (München)</strong></li>
+          <li><span>Zielflughafen</span><strong>LHR (London Heathrow)</strong></li>
           <li><span>Währung</span><strong>GBP</strong></li>
         </ul>
 
@@ -826,38 +860,7 @@
 </script>
 
 <style>
-  .gallery-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  #galleryImage {
-    width: 100%;
-    max-width: 800px;
-    border-radius: 10px;
-    aspect-ratio: 16/10;
-    object-fit: cover;
-  }
-
-  .nav {
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
-  }
-
-  .nav:hover {
-    background-color: rgba(0,0,0,0.8);
-  }
+  
 </style>
 
     </div>
@@ -1472,6 +1475,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
