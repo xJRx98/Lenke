@@ -64,14 +64,15 @@
       background:linear-gradient(180deg,#1a1a1a,#0f0f0f);
     }
 
-    .gallery-container {
+ .gallery-container {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   max-width: 800px;
+  width: 100%;          /* passt sich der Bildschirmbreite an */
   margin: 0 auto;
-  overflow: hidden; /* verhindert Überstehen */
+  overflow: hidden;     /* verhindert Überstehen */
 }
 
 .gallery-container .nav {
@@ -94,35 +95,36 @@
 }
 
 .gallery-container .nav.left {
-  left: 10px; /* Abstand vom linken Bildrand */
+  left: 10px;
 }
 
 .gallery-container .nav.right {
-  right: 10px; /* Abstand vom rechten Bildrand */
+  right: 10px;
 }
 
+#galleryImage {
+  width: 100%;
+  max-width: 100%;       /* verhindert, dass es größer als Container wird */
+  border-radius: 10px;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
+
+/* Anpassung für kleinere Bildschirme */
+@media(max-width:600px){
   #galleryImage {
     width: 100%;
-    max-width: 800px;
-    border-radius: 10px;
-    aspect-ratio: 16/10;
-    object-fit: cover;
+    height: auto;         /* proportional skalieren */
+    aspect-ratio: auto;   /* Höhe passt sich automatisch an */
   }
 
-  .nav {
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
+  .gallery-container .nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
   }
+}
 
-  .nav:hover {
-    background-color: rgba(0,0,0,0.8);
-  }
 
     #londonImage{
   position:absolute;
@@ -1514,6 +1516,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
