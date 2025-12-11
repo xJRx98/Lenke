@@ -716,8 +716,8 @@
       <div class="cta-section">
         <div class="cta-row">
           <button class="btn primary" onclick="openModal('flightModal')">✈️ Flugdetails</button>
-          <button class="btn secondary" onclick="openModal('stayModal')">🏨 Unterkunft</button>
-          <a class="btn ghost" href="#itinerary">📋 Reiseverlauf</a>
+          <button class="btn primary" onclick="openModal('stayModal')">🏨 Unterkunft</button>
+          
         </div>
       </div>
     </section>
@@ -725,7 +725,7 @@
     <!-- CONTENT -->
     <div class="grid">
       <aside class="card" aria-labelledby="infoHeading">
-        <h2 id="infoHeading">Kurzinformation</h2>
+        <h2 id="infoHeading">Informationen zur Reise</h2>
         <p class="muted">Alles Wichtige auf einen Blick</p>
         <ul class="info-list" style="margin-top:12px">
           <li><span>Reiseziel</span><strong>London, UK</strong></li>
@@ -741,7 +741,7 @@
       </aside>
 
       <main class="card" aria-labelledby="itineraryHeading">
-        <h2 id="itineraryHeading">Reiseverlauf — Kurz</h2>
+        <h2 id="itineraryHeading">Reiseverlauf</h2>
         <p class="muted">Mögliches Programm</p>
         <ol class="itinerary" style="margin-top:12px" id="itinerary">
           <li><strong>Tag 1:</strong> Ankunft</li>
@@ -750,9 +750,10 @@
           <li><strong>Tag 4:</strong> Camden Market & Kulinarische Tour</li>
           <li><strong>Tag 5:</strong> Buckingham Palace & Abreise</li>
         </ol>
+      </main>
 
        
-
+       <main class="card" aria-labelledby="itineraryHeading">
         <section id="gallery" style="margin-top:18px">
           <h3 style="margin:0 0 8px">Galerie</h3>
           <div class="gallery">
@@ -1375,5 +1376,6 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
