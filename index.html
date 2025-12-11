@@ -474,6 +474,257 @@
       }
     }
 
+    /* Boarding Pass Styles */
+    .boarding-pass{
+      background:linear-gradient(135deg, rgba(26,26,26,0.6), rgba(42,42,42,0.6));
+      border:1px solid rgba(212,175,55,0.25);
+      border-radius:12px;
+      padding:20px;
+    }
+    
+    .flight-segment{
+      background:rgba(0,0,0,0.2);
+      border-radius:10px;
+      padding:16px;
+      border:1px solid rgba(212,175,55,0.1);
+    }
+    
+    .flight-route{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:16px;
+      align-items:center;
+      margin-bottom:16px;
+    }
+    
+    .airport-info{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    
+    .airport-code{
+      font-size:28px;
+      font-weight:700;
+      color:var(--gold);
+      letter-spacing:-0.5px;
+      line-height:1;
+    }
+    
+    .airport-name{
+      font-size:12px;
+      color:var(--text-muted);
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+    
+    .flight-time{
+      font-size:18px;
+      font-weight:600;
+      color:var(--text-gold);
+      margin-top:4px;
+    }
+    
+    .flight-duration{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      min-width:80px;
+    }
+    
+    .duration-line{
+      position:relative;
+      width:100%;
+      height:2px;
+      background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+      border-radius:2px;
+    }
+    
+    .plane-icon{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      font-size:16px;
+      background:var(--card);
+      padding:2px 4px;
+      border-radius:4px;
+    }
+    
+    .duration-text{
+      font-size:11px;
+      color:var(--text-muted);
+      white-space:nowrap;
+    }
+    
+    .flight-details{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:12px;
+      padding-top:12px;
+      border-top:1px dashed rgba(212,175,55,0.2);
+    }
+    
+    .detail-item{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    
+    .detail-label{
+      font-size:10px;
+      color:var(--text-muted);
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+    
+    .detail-value{
+      font-size:14px;
+      font-weight:600;
+      color:var(--text-gold);
+    }
+    
+    @media(max-width:480px){
+      .flight-route{
+        grid-template-columns:1fr;
+        gap:12px;
+        text-align:center;
+      }
+      
+      .airport-info{
+        align-items:center;
+      }
+      
+      .flight-duration{
+        transform:rotate(90deg);
+        margin:8px 0;
+      }
+      
+      .flight-details{
+        grid-template-columns:repeat(2, 1fr);
+      }
+      
+      .airport-code{
+        font-size:24px;
+      }
+      
+      .flight-time{
+        font-size:16px;
+      }
+    }
+
+    /* AirBnB-Style Listing */
+    .airbnb-listing{
+      color:var(--text-gold);
+    }
+    
+    .property-gallery{
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:8px;
+      margin-bottom:16px;
+      height:320px;
+    }
+    
+    .main-image{
+      background-size:cover;
+      background-position:center;
+      border-radius:12px 0 0 12px;
+      position:relative;
+      overflow:hidden;
+    }
+    
+    .thumbnail-grid{
+      display:grid;
+      grid-template-rows:1fr 1fr 1fr;
+      gap:8px;
+    }
+    
+    .thumb-image{
+      background-size:cover;
+      background-position:center;
+      border-radius:0 12px 12px 0;
+    }
+    
+    .thumb-image:first-child{
+      border-radius:0 12px 0 0;
+    }
+    
+    .thumb-image:last-child{
+      border-radius:0 0 12px 0;
+    }
+    
+    .property-feature{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px;
+      background:rgba(212,175,55,0.05);
+      border-radius:8px;
+      border:1px solid rgba(212,175,55,0.1);
+    }
+    
+    .feature-icon{
+      font-size:20px;
+    }
+    
+    .feature-label{
+      font-size:11px;
+      color:var(--text-muted);
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+    
+    .feature-value{
+      font-size:14px;
+      color:var(--text-gold);
+      font-weight:600;
+    }
+    
+    .amenity-item{
+      display:flex;
+      align-items:center;
+      font-size:14px;
+      color:var(--text-gold);
+      padding:6px 0;
+    }
+    
+    .location-map{
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(212,175,55,0.2);
+    }
+    
+    @media(max-width:600px){
+      .property-gallery{
+        grid-template-columns:1fr;
+        grid-template-rows:200px 80px;
+        height:auto;
+      }
+      
+      .main-image{
+        border-radius:12px 12px 0 0;
+      }
+      
+      .thumbnail-grid{
+        grid-template-rows:1fr;
+        grid-template-columns:1fr 1fr 1fr;
+      }
+      
+      .thumb-image{
+        border-radius:0 0 12px 12px;
+      }
+      
+      .thumb-image:first-child{
+        border-radius:0 0 0 12px;
+      }
+      
+      .thumb-image:last-child{
+        border-radius:0 0 12px 0;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -484,6 +735,14 @@
       <div class="video-wrap">
         <iframe src="https://www.youtube.com/embed/_U1up-tK9w8?autoplay=1&mute=1&controls=0&loop=1&playlist=_U1up-tK9w8&playsinline=1&rel=0&modestbranding=1"
                 allow="autoplay; encrypted-media" frameborder="0" title="London Video"></iframe>
+      </div>
+
+      <div class="overlay">
+        <div class="hero-content">
+          <div class="badge">Städtereise • 5 Nächte</div>
+          <h1>Elegante Reise nach London</h1>
+          <p>Eine stilvolle Mischung aus Kultur, feinen Restaurants und ikonischen Sehenswürdigkeiten — perfekt komponiert für anspruchsvolle Entdecker.</p>
+        </div>
       </div>
       
       <!-- CTA Buttons unter dem Video -->
@@ -504,7 +763,7 @@
         <ul class="info-list" style="margin-top:12px">
           <li><span>Reiseziel</span><strong>London, UK</strong></li>
           <li><span>Reisedauer</span><strong>5 Nächte</strong></li>
-          <li><span>Abflughafen</span><strong>MUC (München)</strong></li>
+          <li><span>Abflughafen</span><strong>BER (Berlin)</strong></li>
           <li><span>Währung</span><strong>GBP</strong></li>
         </ul>
 
@@ -515,10 +774,10 @@
       </aside>
 
       <main class="card" aria-labelledby="itineraryHeading">
-        <h2 id="itineraryHeading">Reiseverlauf</h2>
-        <p class="muted">Mögliches Programm</p>
+        <h2 id="itineraryHeading">Reiseverlauf — Kurz</h2>
+        <p class="muted">Ein kompakter, eleganter Ablauf</p>
         <ol class="itinerary" style="margin-top:12px" id="itinerary">
-          <li><strong>Tag 1:</strong> Anreise</li>
+          <li><strong>Tag 1:</strong> Ankunft & Spaziergang an der Themse</li>
           <li><strong>Tag 2:</strong> Tower of London & Afternoon Tea</li>
           <li><strong>Tag 3:</strong> British Museum & West End Theater</li>
           <li><strong>Tag 4:</strong> Camden Market & Kulinarische Tour</li>
@@ -527,6 +786,7 @@
 
         <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; justify-content:flex-end">
           <a class="btn primary" href="#gallery">🖼️ Galerie</a>
+          <button class="btn secondary" onclick="openModal('customModal')">🎯 Anpassen</button>
         </div>
 
         <section id="gallery" style="margin-top:18px">
@@ -542,24 +802,199 @@
       </main>
     </div>
 
-    <div class="footer">Dieses Angebot gilt nur für Lenke.</div>
+    <div class="footer">Diese Seite ist ein Design-Beispiel. Preise, Zeiten und Verfügbarkeit sind exemplarisch.</div>
 
   </div>
 
   <!-- MODALS -->
   <div id="flightModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal">
+    <div class="modal" style="max-width:680px;">
       <button class="close" onclick="closeModal('flightModal')">✕</button>
-      <h3>Flugdetails</h3>
-      <p class="muted">Beispiel: Direktflug, Handgepäck inklusive.</p>
-      <ul style="margin-top:12px">
-        <li><strong>Airline:</strong> Lufthansa</li>
-        <li><strong>Abflug:</strong> 30.03.2026 — MUC 17:20</li>
-        <li><strong>Ankunft:</strong> 30.03.2026 - LHR 18:25</li>
-        <li><strong>Rückflug:</strong> 04.04.2026 — LHR 20:25</li>
-        <li><strong>Ankunft:</strong> 04.04.2026 — LHR 23:20</li>
-      </ul>
-      <div class="actions">
+      
+      <!-- Boarding Pass Design -->
+      <div class="boarding-pass">
+        <div class="ticket-header">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <div>
+              <h3 style="margin:0; font-size:22px;">Boarding Pass</h3>
+              <p class="muted" style="margin:4px 0 0 0; font-size:13px;">Lufthansa • Direktflug</p>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:11px; color:var(--text-muted); letter-spacing:0.5px;">BOOKING REF</div>
+              <div style="font-size:16px; font-weight:700; color:var(--gold); letter-spacing:1px;">LH47B9</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hinflug -->
+        <div class="flight-segment">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <span style="display:inline-block; padding:4px 10px; background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.3)); border:1px solid var(--gold); border-radius:6px; font-size:11px; font-weight:700; color:var(--gold); letter-spacing:0.5px;">OUTBOUND</span>
+            <span style="color:var(--text-muted); font-size:13px;">30. März 2026</span>
+          </div>
+          
+          <div class="flight-route">
+            <div class="airport-info">
+              <div class="airport-code">MUC</div>
+              <div class="airport-name">München</div>
+              <div class="flight-time">17:20</div>
+            </div>
+            
+            <div class="flight-duration">
+              <div class="duration-line">
+                <div class="plane-icon">✈</div>
+              </div>
+              <div class="duration-text">~1h 05min</div>
+            </div>
+            
+            <div class="airport-info" style="text-align:right;">
+              <div class="airport-code">LHR</div>
+              <div class="airport-name">London Heathrow</div>
+              <div class="flight-time">18:25</div>
+            </div>
+          </div>
+          
+          <div class="flight-details">
+            <div class="detail-item">
+              <span class="detail-label">Flugnummer</span>
+              <span class="detail-value">LH 2474</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Klasse</span>
+              <span class="detail-value">Economy</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Gate</span>
+              <span class="detail-value">K12</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Sitz</span>
+              <span class="detail-value">23A</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rückflug -->
+        <div class="flight-segment" style="margin-top:20px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <span style="display:inline-block; padding:4px 10px; background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.3)); border:1px solid var(--gold); border-radius:6px; font-size:11px; font-weight:700; color:var(--gold); letter-spacing:0.5px;">RETURN</span>
+            <span style="color:var(--text-muted); font-size:13px;">04. April 2026</span>
+          </div>
+          
+          <div class="flight-route">
+            <div class="airport-info">
+              <div class="airport-code">LHR</div>
+              <div class="airport-name">London Heathrow</div>
+              <div class="flight-time">20:25</div>
+            </div>
+            
+            <div class="flight-duration">
+              <div class="duration-line">
+                <div class="plane-icon" style="transform:scaleX(-1);">✈</div>
+              </div>
+              <div class="duration-text">~1h 55min</div>
+            </div>
+            
+            <div class="airport-info" style="text-align:right;">
+              <div class="airport-code">MUC</div>
+              <div class="airport-name">München</div>
+              <div class="flight-time">23:20</div>
+            </div>
+          </div>
+          
+          <div class="flight-details">
+            <div class="detail-item">
+              <span class="detail-label">Flugnummer</span>
+              <span class="detail-value">LH 2475</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Klasse</span>
+              <span class="detail-value">Economy</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Gate</span>
+              <span class="detail-value">G08</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Sitz</span>
+              <span class="detail-value">23A</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Passagier Info -->
+        <div style="margin-top:20px; padding-top:16px; border-top:1px dashed rgba(212,175,55,0.25);">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+            <div>
+              <div class="detail-label">Passagier</div>
+              <div class="detail-value">Max Mustermann</div>
+            </div>
+            <div>
+              <div class="detail-label">Gepäck</div>
+              <div class="detail-value">1x Handgepäck</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barcode -->
+        <div style="margin-top:20px; text-align:center; padding:16px; background:rgba(0,0,0,0.3); border-radius:8px; border:1px solid rgba(212,175,55,0.15);">
+          <svg width="100%" height="60" viewBox="0 0 300 60" style="max-width:300px; margin:0 auto;">
+            <g fill="var(--gold)">
+              <rect x="5" y="5" width="3" height="50"/>
+              <rect x="12" y="5" width="2" height="50"/>
+              <rect x="18" y="5" width="4" height="50"/>
+              <rect x="26" y="5" width="2" height="50"/>
+              <rect x="32" y="5" width="3" height="50"/>
+              <rect x="39" y="5" width="2" height="50"/>
+              <rect x="45" y="5" width="5" height="50"/>
+              <rect x="54" y="5" width="2" height="50"/>
+              <rect x="60" y="5" width="3" height="50"/>
+              <rect x="67" y="5" width="4" height="50"/>
+              <rect x="75" y="5" width="2" height="50"/>
+              <rect x="81" y="5" width="3" height="50"/>
+              <rect x="88" y="5" width="2" height="50"/>
+              <rect x="94" y="5" width="4" height="50"/>
+              <rect x="102" y="5" width="3" height="50"/>
+              <rect x="109" y="5" width="2" height="50"/>
+              <rect x="115" y="5" width="5" height="50"/>
+              <rect x="124" y="5" width="2" height="50"/>
+              <rect x="130" y="5" width="3" height="50"/>
+              <rect x="137" y="5" width="2" height="50"/>
+              <rect x="143" y="5" width="4" height="50"/>
+              <rect x="151" y="5" width="3" height="50"/>
+              <rect x="158" y="5" width="2" height="50"/>
+              <rect x="164" y="5" width="5" height="50"/>
+              <rect x="173" y="5" width="2" height="50"/>
+              <rect x="179" y="5" width="3" height="50"/>
+              <rect x="186" y="5" width="4" height="50"/>
+              <rect x="194" y="5" width="2" height="50"/>
+              <rect x="200" y="5" width="3" height="50"/>
+              <rect x="207" y="5" width="2" height="50"/>
+              <rect x="213" y="5" width="4" height="50"/>
+              <rect x="221" y="5" width="3" height="50"/>
+              <rect x="228" y="5" width="2" height="50"/>
+              <rect x="234" y="5" width="5" height="50"/>
+              <rect x="243" y="5" width="2" height="50"/>
+              <rect x="249" y="5" width="3" height="50"/>
+              <rect x="256" y="5" width="2" height="50"/>
+              <rect x="262" y="5" width="4" height="50"/>
+              <rect x="270" y="5" width="3" height="50"/>
+              <rect x="277" y="5" width="2" height="50"/>
+              <rect x="283" y="5" width="5" height="50"/>
+              <rect x="292" y="5" width="3" height="50"/>
+            </g>
+          </svg>
+          <div style="margin-top:8px; font-size:11px; color:var(--text-muted); letter-spacing:1px;">LH47B9-2026-MUC-LHR</div>
+        </div>
+
+        <div style="margin-top:16px; padding:12px; background:rgba(212,175,55,0.05); border-radius:8px; border:1px solid rgba(212,175,55,0.15);">
+          <p style="margin:0; font-size:12px; color:var(--text-muted); line-height:1.5;">
+            ⚠️ Bitte erscheinen Sie mindestens 2 Stunden vor Abflug am Flughafen. Boarding endet 30 Minuten vor Abflug.
+          </p>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:20px;">
         <a class="btn primary" href="https://www.google.com/flights" target="_blank">Flüge prüfen</a>
         <button class="btn ghost" onclick="closeModal('flightModal')">Schließen</button>
       </div>
@@ -567,16 +1002,156 @@
   </div>
 
   <div id="stayModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal">
+    <div class="modal" style="max-width:720px;">
       <button class="close" onclick="closeModal('stayModal')">✕</button>
-      <h3>Unterkunft</h3>
-      <ul style="margin-top:12px">
-        <li><strong>Name:</strong> Gemütliches Studio in der nähe des Lonndoner Zentrums</li>
-        <li><strong>Lage:</strong> Whitechapel</li>
-        <li><strong>Preis:</strong> ab ca. €150/Nacht</li>
-      </ul>
-      <div class="actions">
-        <a class="btn primary" href="https://www.booking.com" target="_blank">Verfügbarkeiten</a>
+      
+      <!-- AirBnB-Style Unterkunft -->
+      <div class="airbnb-listing">
+        <!-- Unterkunfts-Galerie -->
+        <div class="property-gallery">
+          <div class="main-image" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800');"></div>
+          <div class="thumbnail-grid">
+            <div class="thumb-image" style="background-image:url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400');"></div>
+            <div class="thumb-image" style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400');"></div>
+            <div class="thumb-image" style="background-image:url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=400');"></div>
+          </div>
+        </div>
+
+        <!-- Unterkunfts-Info -->
+        <div style="padding:20px 0;">
+          <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:12px; flex-wrap:wrap; gap:12px;">
+            <div>
+              <h3 style="margin:0 0 4px; font-size:22px;">The Central Boutique</h3>
+              <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                <div style="display:flex; align-items:center; gap:4px;">
+                  <span style="color:var(--gold); font-size:14px;">★★★★★</span>
+                  <span style="font-size:14px; color:var(--text-gold); font-weight:600;">4.92</span>
+                  <span style="font-size:14px; color:var(--text-muted);">(127 Bewertungen)</span>
+                </div>
+                <span style="font-size:14px; color:var(--text-muted);">•</span>
+                <span style="font-size:14px; color:var(--text-gold);">Covent Garden, London</span>
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:24px; font-weight:700; color:var(--gold);">£128</div>
+              <div style="font-size:13px; color:var(--text-muted);">pro Nacht</div>
+            </div>
+          </div>
+
+          <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+          <!-- Unterkunfts-Details -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px; margin-bottom:16px;">
+            <div class="property-feature">
+              <span class="feature-icon">👥</span>
+              <div>
+                <div class="feature-label">Gäste</div>
+                <div class="feature-value">2 Gäste</div>
+              </div>
+            </div>
+            <div class="property-feature">
+              <span class="feature-icon">🛏️</span>
+              <div>
+                <div class="feature-label">Schlafzimmer</div>
+                <div class="feature-value">1 Zimmer</div>
+              </div>
+            </div>
+            <div class="property-feature">
+              <span class="feature-icon">🛁</span>
+              <div>
+                <div class="feature-label">Badezimmer</div>
+                <div class="feature-value">1 Bad</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+          <!-- Beschreibung -->
+          <div style="margin-bottom:16px;">
+            <p style="margin:0; color:var(--text-gold); font-size:14px; line-height:1.6;">
+              Stilvolles Boutique-Zimmer im Herzen von Covent Garden. Perfekte Lage für Theater, Restaurants und Shopping. Nur 5 Minuten zu Fuß zur U-Bahn-Station.
+            </p>
+          </div>
+
+          <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+          <!-- Ausstattung -->
+          <div style="margin-bottom:16px;">
+            <h4 style="margin:0 0 12px; font-size:16px; color:var(--gold);">Ausstattung</h4>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:8px;">
+              <div class="amenity-item">
+                <span style="margin-right:8px;">📶</span>
+                <span>Kostenloses WLAN</span>
+              </div>
+              <div class="amenity-item">
+                <span style="margin-right:8px;">☕</span>
+                <span>Frühstück inklusive</span>
+              </div>
+              <div class="amenity-item">
+                <span style="margin-right:8px;">❄️</span>
+                <span>Klimaanlage</span>
+              </div>
+              <div class="amenity-item">
+                <span style="margin-right:8px;">🧺</span>
+                <span>Wäscheservice</span>
+              </div>
+              <div class="amenity-item">
+                <span style="margin-right:8px;">🅿️</span>
+                <span>Parkplatz (gegen Gebühr)</span>
+              </div>
+              <div class="amenity-item">
+                <span style="margin-right:8px;">🔐</span>
+                <span>Safe im Zimmer</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+          <!-- Karte -->
+          <div style="margin-bottom:16px;">
+            <h4 style="margin:0 0 12px; font-size:16px; color:var(--gold);">Lage</h4>
+            <div class="location-map">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.0378087341894!2d-0.12478708422935595!3d51.51278897963712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604ce3941eb1f%3A0x1a5c0c4c5cc3e87!2sCovent%20Garden%2C%20London!5e0!3m2!1sde!2suk!4v1234567890123!5m2!1sde!2suk"
+                width="100%" 
+                height="300" 
+                style="border:0; border-radius:12px; filter:grayscale(20%) contrast(1.1) brightness(0.85);" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <div style="margin-top:12px; padding:12px; background:rgba(212,175,55,0.05); border-radius:8px; border:1px solid rgba(212,175,55,0.15);">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                <span style="color:var(--gold);">📍</span>
+                <span style="font-size:14px; font-weight:600; color:var(--text-gold);">Covent Garden, London WC2E</span>
+              </div>
+              <p style="margin:0; font-size:13px; color:var(--text-muted); line-height:1.5;">
+                5 Min. zu Fuß zur U-Bahn • 2 Min. zum Royal Opera House • 10 Min. zum British Museum
+              </p>
+            </div>
+          </div>
+
+          <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+          <!-- Check-in Details -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div>
+              <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Check-in</div>
+              <div style="font-size:14px; color:var(--text-gold); font-weight:600;">14:00 - 22:00</div>
+            </div>
+            <div>
+              <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Check-out</div>
+              <div style="font-size:14px; color:var(--text-gold); font-weight:600;">bis 11:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:20px;">
+        <a class="btn primary" href="https://www.booking.com" target="_blank">Verfügbarkeit prüfen</a>
         <button class="btn ghost" onclick="closeModal('stayModal')">Schließen</button>
       </div>
     </div>
@@ -707,4 +1282,3 @@
   </script>
 </body>
 </html>
-
