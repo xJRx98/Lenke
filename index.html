@@ -813,37 +813,58 @@
 </main>
 
 <script>
-  const totalImages = 6;
+  // Lokale Bilder in assets/images/london/
+  const galleryPhotos = [
+    'assets/images/Bild5.png',
+    'assets/images/Bild6.png',
+    'assets/images/Bild7.png',
+    'assets/images/Bild8.png',
+    'assets/images/Bild9.png',
+    'assets/images/Bild10.png',
+    'assets/images/Bild11.png',
+    'assets/images/Bild12.png',
+    'assets/images/Bild13.png',
+    'assets/images/Bild14.png',
+    'assets/images/Bild15.png',
+    'assets/images/Bild16.png',
+    'assets/images/Bild17.png',
+    'assets/images/Bild18.png',
+    'assets/images/Bild19.png',
+    'assets/images/Bild20.png'
+  ];
+
   let currentIndex = 0;
   const galleryImage = document.getElementById('galleryImage');
 
   function showImage(index) {
-    galleryImage.src = `https://source.unsplash.com/800x500/?london&sig=${index}`;
+    galleryImage.src = galleryPhotos[index];
   }
 
+  // Erstes Bild anzeigen
   showImage(currentIndex);
 
+  // Buttons
   document.querySelector('.nav.left').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    currentIndex = (currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
     showImage(currentIndex);
   });
 
   document.querySelector('.nav.right').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalImages;
+    currentIndex = (currentIndex + 1) % galleryPhotos.length;
     showImage(currentIndex);
   });
 
+  // Pfeiltasten
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
-      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+      currentIndex = (currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
       showImage(currentIndex);
     } else if (e.key === 'ArrowRight') {
-      currentIndex = (currentIndex + 1) % totalImages;
+      currentIndex = (currentIndex + 1) % galleryPhotos.length;
       showImage(currentIndex);
     }
   });
 </script>
-
 
     </div>
 
@@ -1457,6 +1478,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
