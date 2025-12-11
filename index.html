@@ -806,51 +806,44 @@
     <h3 style="margin:0 0 8px">Galerie</h3>
     <div class="gallery-container">
       <button class="nav left" aria-label="Vorheriges Bild">&larr;</button>
-      <img id="galleryImage" src="" alt="London Foto">
+      <img id="galleryImage" src="" alt="London Foto" width="800" height="500">
       <button class="nav right" aria-label="Nächstes Bild">&rarr;</button>
     </div>
   </section>
 </main>
 
 <script>
-  // Zufällige London-Bilder von Unsplash
-  const galleryPhotos = [
-    'https://source.unsplash.com/800x500/?london',
-    'https://source.unsplash.com/800x500/?london',
-    'https://source.unsplash.com/800x500/?london',
-    'https://source.unsplash.com/800x500/?london',
-    'https://source.unsplash.com/800x500/?london',
-    'https://source.unsplash.com/800x500/?london'
-  ];
-
+  const baseUrl = 'https://source.unsplash.com/800x500/?london';
+  const totalImages = 6; // Anzahl der Bilder in der Galerie
   let currentIndex = 0;
+
   const galleryImage = document.getElementById('galleryImage');
 
   function showImage(index) {
-    // Cache umgehen: ?random= verwenden
-    galleryImage.src = galleryPhotos[index] + '?random=' + new Date().getTime();
+    // Füge für jedes Bild eine eindeutige Zahl hinzu
+    galleryImage.src = `${baseUrl}&sig=${index}`;
   }
 
   showImage(currentIndex);
 
   // Buttons
   document.querySelector('.nav.left').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
     showImage(currentIndex);
   });
 
   document.querySelector('.nav.right').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % galleryPhotos.length;
+    currentIndex = (currentIndex + 1) % totalImages;
     showImage(currentIndex);
   });
 
   // Pfeiltasten
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
-      currentIndex = (currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
       showImage(currentIndex);
     } else if (e.key === 'ArrowRight') {
-      currentIndex = (currentIndex + 1) % galleryPhotos.length;
+      currentIndex = (currentIndex + 1) % totalImages;
       showImage(currentIndex);
     }
   });
@@ -1468,6 +1461,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
