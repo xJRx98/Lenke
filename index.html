@@ -597,7 +597,7 @@
       }
       
       .flight-duration{
-        transform:rotate(90deg);
+        transform: none;
         margin:8px 0;
       }
       
@@ -757,7 +757,7 @@
         <ul class="info-list" style="margin-top:12px">
           <li><span>Reiseziel</span><strong>London, UK</strong></li>
           <li><span>Reisedauer</span><strong>5 Nächte</strong></li>
-          <li><span>Abflughafen</span><strong>BER (Berlin)</strong></li>
+          <li><span>Abflughafen</span><strong>MUC (München)</strong></li>
           <li><span>Währung</span><strong>GBP</strong></li>
         </ul>
 
@@ -796,7 +796,7 @@
       </main>
     </div>
 
-    <div class="footer">Diese Seite ist ein Design-Beispiel. Preise, Zeiten und Verfügbarkeit sind exemplarisch.</div>
+    <div class="footer">Diese Reise ist exklusiv für Lenke geplant.</div>
 
   </div>
 
@@ -814,8 +814,8 @@
               <p class="muted" style="margin:4px 0 0 0; font-size:13px;">Lufthansa • Direktflug</p>
             </div>
             <div style="text-align:right;">
-              <div style="font-size:11px; color:var(--text-muted); letter-spacing:0.5px;">BOOKING REF</div>
-              <div style="font-size:16px; font-weight:700; color:var(--gold); letter-spacing:1px;">LH 2486</div>
+              <div style="font-size:11px; color:var(--text-muted); letter-spacing:0.5px;">FLUGNUMMER</div>
+              <div style="font-size:16px; font-weight:700; color:var(--gold); letter-spacing:1px;">LG 1225</div>
             </div>
           </div>
         </div>
@@ -823,7 +823,7 @@
         <!-- Hinflug -->
         <div class="flight-segment">
           <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
-            <span style="display:inline-block; padding:4px 10px; background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.3)); border:1px solid var(--gold); border-radius:6px; font-size:11px; font-weight:700; color:var(--gold); letter-spacing:0.5px;">OUTBOUND</span>
+            <span style="display:inline-block; padding:4px 10px; background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.3)); border:1px solid var(--gold); border-radius:6px; font-size:11px; font-weight:700; color:var(--gold); letter-spacing:0.5px;">HINFLUG</span>
             <span style="color:var(--text-muted); font-size:13px;">30. März 2026</span>
           </div>
           
@@ -871,7 +871,7 @@
         <!-- Rückflug -->
         <div class="flight-segment" style="margin-top:20px;">
           <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
-            <span style="display:inline-block; padding:4px 10px; background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.3)); border:1px solid var(--gold); border-radius:6px; font-size:11px; font-weight:700; color:var(--gold); letter-spacing:0.5px;">RETURN</span>
+            <span style="display:inline-block; padding:4px 10px; background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.3)); border:1px solid var(--gold); border-radius:6px; font-size:11px; font-weight:700; color:var(--gold); letter-spacing:0.5px;">RÜCKFLUG</span>
             <span style="color:var(--text-muted); font-size:13px;">04. April 2026</span>
           </div>
           
@@ -925,7 +925,8 @@
             </div>
             <div>
               <div class="detail-label">Gepäck</div>
-              <div class="detail-value">1x Rucksack, 1x Handgepäck</div>
+              <div class="detail-value">1x Rucksack,<br />
+                1x Handgepäck</div>
             </div>
           </div>
         </div>
@@ -978,7 +979,7 @@
               <rect x="292" y="5" width="3" height="50"/>
             </g>
           </svg>
-          <div style="margin-top:8px; font-size:11px; color:var(--text-muted); letter-spacing:1px;">LH47B9-2026-MUC-LHR</div>
+          <div style="margin-top:8px; font-size:11px; color:var(--text-muted); letter-spacing:1px;">LG1225-2026-MUC-LHR</div>
         </div>
 
         <div style="margin-top:16px; padding:12px; background:rgba(212,175,55,0.05); border-radius:8px; border:1px solid rgba(212,175,55,0.15);">
@@ -1276,4 +1277,5 @@
   </script>
 </body>
 </html>
+
 
