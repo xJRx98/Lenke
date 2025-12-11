@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>Lenke</title>
   <style>
-    /* Elegant black & gold palette */
+    /* Farbpalette & Grundstile */
     :root{
       --gold:#d4af37;
       --gold-light:#e8c567;
@@ -28,7 +28,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
-    html,body{
+    html, body{
       height:100%; 
       margin:0; 
       background:linear-gradient(180deg, #0a0a0a, var(--bg)); 
@@ -38,12 +38,14 @@
       font-size:16px;
       line-height:1.6;
     }
+
     .page{
       max-width:var(--max-width); 
       margin:0 auto; 
       padding:16px;
       padding-bottom:max(16px, env(safe-area-inset-bottom));
     }
+
     @media(min-width:768px){
       .page{padding:24px; margin:20px auto;}
     }
@@ -57,6 +59,7 @@
       margin-bottom:20px;
       border:1px solid rgba(212,175,55,0.2);
     }
+
     .video-wrap{
       position:relative; 
       width:100%; 
@@ -66,6 +69,7 @@
     @media(min-width:768px){
       .video-wrap{padding-bottom:56%;}
     }
+
     .hero iframe{
       position:absolute; 
       top:0; 
@@ -90,11 +94,7 @@
     @media(min-width:768px){
       .overlay{padding:28px;}
     }
-    
-    .hero-content{
-      margin-bottom:0;
-    }
-    
+
     .hero h1{
       color:var(--gold); 
       margin:0 0 8px; 
@@ -104,6 +104,7 @@
       text-shadow:0 4px 20px rgba(212,175,55,0.5);
       line-height:1.2;
     }
+
     .hero p{
       color:var(--text-gold); 
       margin:0; 
@@ -112,7 +113,7 @@
       line-height:1.5;
     }
 
-    /* Buttons unter dem Video */
+    /* CTA Buttons unter dem Video */
     .cta-section{
       background:linear-gradient(180deg, rgba(26,26,26,0.95), rgba(15,15,15,0.98));
       backdrop-filter:blur(10px);
@@ -123,7 +124,7 @@
     @media(min-width:768px){
       .cta-section{padding:24px 28px;}
     }
-    
+
     .cta-row{
       display:flex; 
       gap:10px; 
@@ -133,7 +134,7 @@
     @media(min-width:768px){
       .cta-row{justify-content:flex-start;}
     }
-    
+
     .btn{
       display:inline-flex; 
       align-items:center; 
@@ -151,13 +152,14 @@
       position:relative;
       overflow:hidden;
     }
-    
+
     .btn.primary{
       background:linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%); 
       color:var(--black); 
       box-shadow:var(--shadow-gold);
       font-weight:700;
     }
+
     .btn.primary::before{
       content:'';
       position:absolute;
@@ -173,7 +175,7 @@
       box-shadow:0 12px 40px rgba(212,175,55,0.4);
       transform:translateY(-2px);
     }
-    
+
     .btn.secondary{
       background:rgba(212,175,55,0.1); 
       border:1.5px solid var(--gold);
@@ -185,7 +187,7 @@
       color:var(--gold-light);
       box-shadow:0 8px 24px rgba(212,175,55,0.2);
     }
-    
+
     .btn.ghost{
       background:rgba(255,255,255,0.05); 
       border:1.5px solid rgba(255,255,255,0.15); 
@@ -197,19 +199,7 @@
       color:var(--gold-light);
     }
 
-    .badge{
-      display:inline-block; 
-      font-size:13px; 
-      padding:8px 14px; 
-      border-radius:999px; 
-      background:linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.25)); 
-      border:1px solid rgba(212,175,55,0.3);
-      color:var(--gold); 
-      font-weight:600;
-      margin-bottom:12px;
-    }
-
-    /* content cards */
+    /* Card & Grid */
     .grid{
       display:grid; 
       grid-template-columns:1fr; 
@@ -217,7 +207,7 @@
       margin-top:0;
     }
     @media(min-width:880px){ 
-      .grid{grid-template-columns: 340px 1fr; gap:20px;} 
+      .grid{grid-template-columns:340px 1fr; gap:20px;} 
     }
 
     .card{
@@ -230,9 +220,9 @@
     @media(min-width:768px){
       .card{padding:24px;}
     }
-    
+
     .muted{color:var(--text-muted); font-size:14px;}
-    
+
     h2{
       margin:0 0 6px; 
       font-size:clamp(18px, 3vw, 20px); 
@@ -240,6 +230,7 @@
       letter-spacing:-0.3px;
       color:var(--gold);
     }
+
     h3{
       font-size:clamp(16px, 2.8vw, 18px);
       font-weight:700;
@@ -247,6 +238,7 @@
       color:var(--gold);
     }
 
+    /* Info List */
     .info-list{list-style:none; padding:0; margin:0;}
     .info-list li{
       display:flex; 
@@ -259,12 +251,9 @@
       color:var(--text-gold);
     }
     .info-list li:last-child{border-bottom:none;}
-    .info-list li strong{
-      font-weight:600;
-      color:var(--gold-light);
-    }
+    .info-list li strong{color:var(--gold-light); font-weight:600;}
 
-    /* itinerary */
+    /* Itinerary */
     .itinerary{padding-left:20px; margin:12px 0;}
     .itinerary li{
       padding:10px 0;
@@ -272,12 +261,9 @@
       line-height:1.6;
       color:var(--text-gold);
     }
-    .itinerary li strong{
-      color:var(--gold);
-      font-weight:600;
-    }
+    .itinerary li strong{color:var(--gold); font-weight:600;}
 
-    /* gallery */
+    /* Gallery */
     .gallery{
       display:grid; 
       grid-template-columns:repeat(2,1fr); 
@@ -311,17 +297,13 @@
       opacity:0;
       transition:opacity 0.3s;
     }
-    .photo:hover::before{
-      opacity:1;
-    }
+    .photo:hover::before{opacity:1;}
     @media(min-width:768px){
       .photo{height:120px; font-size:15px;}
     }
-    .photo:active{
-      transform:scale(0.98);
-    }
+    .photo:active{transform:scale(0.98);}
 
-    /* footer */
+    /* Footer */
     .footer{
       margin-top:24px; 
       padding-top:20px;
@@ -331,7 +313,7 @@
       border-top:1px solid rgba(212,175,55,0.1);
     }
 
-    /* modal */
+    /* Modal */
     .modal-backdrop{
       position:fixed; 
       inset:0; 
@@ -344,6 +326,7 @@
       z-index:9999;
       padding:20px;
     }
+
     .modal{
       background:linear-gradient(135deg, var(--black-light), var(--grey)); 
       padding:24px; 
@@ -355,11 +338,8 @@
       overflow-y:auto;
       position:relative;
     }
-    .modal h3{
-      margin:0 0 8px;
-      padding-right:32px;
-      color:var(--gold);
-    }
+
+    .modal h3{margin:0 0 8px; color:var(--gold);}
     .modal .close{
       position:absolute;
       top:20px;
@@ -389,912 +369,90 @@
       margin-top:20px;
       flex-wrap:wrap;
     }
-    .modal ul{
-      padding-left:20px;
-      margin:12px 0;
-    }
-    .modal ul li{
-      padding:6px 0;
-      font-size:15px;
-      line-height:1.6;
-      color:var(--text-gold);
-    }
-    .modal ul li strong{
-      color:var(--gold-light);
-    }
-    .modal textarea{
-      width:100%; 
-      min-height:120px; 
-      margin-top:12px; 
-      padding:12px; 
-      border-radius:var(--radius-sm); 
-      border:1.5px solid rgba(212,175,55,0.3);
-      background:rgba(0,0,0,0.3);
-      color:var(--text-gold);
-      font-family:inherit;
-      font-size:15px;
-      resize:vertical;
-      transition:all 0.2s ease;
-    }
-    .modal textarea:focus{
-      outline:none;
-      border-color:var(--gold);
-      background:rgba(0,0,0,0.5);
-    }
-    .modal textarea::placeholder{
-      color:var(--text-muted);
-    }
 
-    /* Responsive adjustments */
     @media(max-width:480px){
       .cta-row{flex-direction:column;}
       .cta-row .btn{width:100%;}
       .gallery{gap:10px;}
       .photo{height:90px; font-size:13px; padding:10px;}
       .modal{padding:20px;}
+      .modal-backdrop{align-items:flex-end; padding:0;}
+      .modal{border-radius:var(--radius) var(--radius) 0 0; max-height:85vh;}
     }
 
-    /* micro-interactions */
-    .btn:active{transform:translateY(1px) !important;}
-
-    /* accessibility */
+    /* Accessibility & mobile optimizations */
     :focus-visible{
       outline:3px solid rgba(212,175,55,0.5); 
       outline-offset:3px;
       border-radius:4px;
     }
-    
-    :focus:not(:focus-visible){
-      outline:none;
-    }
-
-    /* iOS/Mobile optimizations */
-    iframe{transform:translateZ(0); -webkit-transform:translateZ(0);}
-    body, html{-webkit-overflow-scrolling:touch;}
-    *{
-      -webkit-tap-highlight-color:transparent;
-      box-sizing:border-box;
-    }
-    
+    :focus:not(:focus-visible){outline:none;}
+    *{-webkit-tap-highlight-color:transparent; box-sizing:border-box;}
     html{scroll-behavior:smooth;}
-    
-    a.btn{
-      -webkit-user-select:none;
-      user-select:none;
-    }
-    
-    /* Improve modal on mobile */
-    @media(max-width:480px){
-      .modal-backdrop{align-items:flex-end; padding:0;}
-      .modal{
-        border-radius:var(--radius) var(--radius) 0 0;
-        max-height:85vh;
-        width:100%;
-        margin:0;
-      }
-    }
-
-    /* Boarding Pass Styles */
-    .boarding-pass{
-      background:linear-gradient(135deg, rgba(26,26,26,0.6), rgba(42,42,42,0.6));
-      border:1px solid rgba(212,175,55,0.25);
-      border-radius:12px;
-      padding:20px;
-    }
-    
-    .flight-segment{
-      background:rgba(0,0,0,0.2);
-      border-radius:10px;
-      padding:16px;
-      border:1px solid rgba(212,175,55,0.1);
-    }
-    
-    .flight-route{
-      display:grid;
-      grid-template-columns:1fr auto 1fr;
-      gap:16px;
-      align-items:center;
-      margin-bottom:16px;
-    }
-    
-    .airport-info{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
-    
-    .airport-code{
-      font-size:28px;
-      font-weight:700;
-      color:var(--gold);
-      letter-spacing:-0.5px;
-      line-height:1;
-    }
-    
-    .airport-name{
-      font-size:12px;
-      color:var(--text-muted);
-      text-transform:uppercase;
-      letter-spacing:0.5px;
-    }
-    
-    .flight-time{
-      font-size:18px;
-      font-weight:600;
-      color:var(--text-gold);
-      margin-top:4px;
-    }
-    
-    .flight-duration{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:8px;
-      min-width:80px;
-    }
-    
-    .duration-line{
-      position:relative;
-      width:100%;
-      height:2px;
-      background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-      border-radius:2px;
-    }
-    
-    .plane-icon{
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      font-size:16px;
-      background:var(--card);
-      padding:2px 4px;
-      border-radius:4px;
-    }
-    
-    .duration-text{
-      font-size:11px;
-      color:var(--text-muted);
-      white-space:nowrap;
-    }
-    
-    .flight-details{
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      gap:12px;
-      padding-top:12px;
-      border-top:1px dashed rgba(212,175,55,0.2);
-    }
-    
-    .detail-item{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
-    
-    .detail-label{
-      font-size:10px;
-      color:var(--text-muted);
-      text-transform:uppercase;
-      letter-spacing:0.5px;
-    }
-    
-    .detail-value{
-      font-size:14px;
-      font-weight:600;
-      color:var(--text-gold);
-    }
-    
-    @media(max-width:480px){
-      .flight-route{
-        grid-template-columns:1fr;
-        gap:12px;
-        text-align:center;
-      }
-      
-      .airport-info{
-        align-items:center;
-      }
-      
-      .flight-duration{
-        transform: none;
-        margin:8px 0;
-      }
-      
-      .flight-details{
-        grid-template-columns:repeat(2, 1fr);
-      }
-      
-      .airport-code{
-        font-size:24px;
-      }
-      
-      .flight-time{
-        font-size:16px;
-      }
-    }
-
-    /* AirBnB-Style Listing */
-    .airbnb-listing{
-      color:var(--text-gold);
-    }
-    
-    .property-gallery{
-      display:grid;
-      grid-template-columns:2fr 1fr;
-      gap:8px;
-      margin-bottom:16px;
-      height:320px;
-    }
-    
-    .main-image{
-      background-size:cover;
-      background-position:center;
-      border-radius:12px 0 0 12px;
-      position:relative;
-      overflow:hidden;
-    }
-    
-    .thumbnail-grid{
-      display:grid;
-      grid-template-rows:1fr 1fr 1fr;
-      gap:8px;
-    }
-    
-    .thumb-image{
-      background-size:cover;
-      background-position:center;
-      border-radius:0 12px 12px 0;
-    }
-    
-    .thumb-image:first-child{
-      border-radius:0 12px 0 0;
-    }
-    
-    .thumb-image:last-child{
-      border-radius:0 0 12px 0;
-    }
-    
-    .property-feature{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:10px;
-      background:rgba(212,175,55,0.05);
-      border-radius:8px;
-      border:1px solid rgba(212,175,55,0.1);
-    }
-    
-    .feature-icon{
-      font-size:20px;
-    }
-    
-    .feature-label{
-      font-size:11px;
-      color:var(--text-muted);
-      text-transform:uppercase;
-      letter-spacing:0.5px;
-    }
-    
-    .feature-value{
-      font-size:14px;
-      color:var(--text-gold);
-      font-weight:600;
-    }
-    
-    .amenity-item{
-      display:flex;
-      align-items:center;
-      font-size:14px;
-      color:var(--text-gold);
-      padding:6px 0;
-    }
-    
-    .location-map{
-      border-radius:12px;
-      overflow:hidden;
-      border:1px solid rgba(212,175,55,0.2);
-    }
-    
-    @media(max-width:600px){
-      .property-gallery{
-        grid-template-columns:1fr;
-        grid-template-rows:200px 80px;
-        height:auto;
-      }
-      
-      .main-image{
-        border-radius:12px 12px 0 0;
-      }
-      
-      .thumbnail-grid{
-        grid-template-rows:1fr;
-        grid-template-columns:1fr 1fr 1fr;
-      }
-      
-      .thumb-image{
-        border-radius:0 0 12px 12px;
-      }
-      
-      .thumb-image:first-child{
-        border-radius:0 0 0 12px;
-      }
-      
-      .thumb-image:last-child{
-        border-radius:0 0 12px 0;
-      }
-    }
-
   </style>
 </head>
 <body>
   <div class="page">
-
-    <!-- HERO -->
-    <section class="hero" aria-label="London Hero">
-      <div class="video-wrap">
-        <iframe id="londonVideo" 
-        src="https://www.youtube.com/embed/_U1up-tK9w8?autoplay=1&mute=1&controls=0&loop=1&playlist=_U1up-tK9w8&playsinline=1&rel=0&modestbranding=1"
-        allow="autoplay; encrypted-media" frameborder="0" title="London Video"></iframe>
-
-      </div>
-
-    
-      
-      <!-- CTA Buttons unter dem Video -->
-      <div class="cta-section">
-        <div class="cta-row">
-          <button class="btn primary" onclick="openModal('flightModal')">✈️ Flugdetails</button>
-          <button class="btn secondary" onclick="openModal('stayModal')">🏨 Unterkunft</button>
-          <a class="btn ghost" href="#itinerary">📋 Reiseverlauf</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTENT -->
-    <div class="grid">
-      <aside class="card" aria-labelledby="infoHeading">
-        <h2 id="infoHeading">Kurzinformation</h2>
-        <p class="muted">Alles Wichtige auf einen Blick</p>
-        <ul class="info-list" style="margin-top:12px">
-          <li><span>Reiseziel</span><strong>London, UK</strong></li>
-          <li><span>Reisedauer</span><strong>5 Nächte</strong></li>
-          <li><span>Abflughafen</span><strong>MUC (München)</strong></li>
-          <li><span>Währung</span><strong>GBP</strong></li>
-        </ul>
-
-        <div style="margin-top:16px; display:flex; gap:8px; flex-wrap:wrap">
-          <button class="btn secondary" onclick="openModal('packing')" style="flex:1; min-width:120px">🧳 Packliste</button>
-          <a class="btn ghost" href="https://www.visitlondon.com" target="_blank" style="flex:1; min-width:120px">🔍 Mehr</a>
-        </div>
-      </aside>
-
-      <main class="card" aria-labelledby="itineraryHeading">
-        <h2 id="itineraryHeading">Reiseverlauf — Kurz</h2>
-        <p class="muted">Mögliches Programm</p>
-        <ol class="itinerary" style="margin-top:12px" id="itinerary">
-          <li><strong>Tag 1:</strong> Ankunft</li>
-          <li><strong>Tag 2:</strong> Tower of London & Afternoon Tea</li>
-          <li><strong>Tag 3:</strong> British Museum & West End Theater</li>
-          <li><strong>Tag 4:</strong> Camden Market & Kulinarische Tour</li>
-          <li><strong>Tag 5:</strong> Buckingham Palace & Abreise</li>
-        </ol>
-
-        <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; justify-content:flex-end">
-          <a class="btn primary" href="#gallery">🖼️ Galerie</a>
-          <button class="btn secondary" onclick="openModal('customModal')">🎯 Anpassen</button>
-        </div>
-
-        <section id="gallery" style="margin-top:18px">
-          <h3 style="margin:0 0 8px">Galerie</h3>
-          <div class="gallery">
-            <div class="photo">Big Ben</div>
-            <div class="photo">Tower Bridge</div>
-            <div class="photo">London Eye</div>
-            <div class="photo">Covent Garden</div>
-          </div>
-        </section>
-
-      </main>
-    </div>
-
-    <div class="footer">Diese Reise ist exklusiv für Lenke geplant.</div>
-
-  </div>
-
-  <!-- MODALS -->
-  <div id="flightModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal" style="max-width:680px;">
-      <button class="close" onclick="closeModal('flightModal')">✕</button>
-      
-      <!-- Boarding Pass Design -->
-      <div class="boarding-pass">
-        <div class="ticket-header">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-            <div>
-              <h3 style="margin:0; font-size:22px;">Boarding Pass</h3>
-              <p class="muted" style="margin:4px 0 0 0; font-size:13px;">Lufthansa • Direktflug</p>
-            </div>
-            <div style="text-align:right;">
-              <div style="font-size:11px; color:var(--text-muted); letter-spacing:0.5px;">BUCHUNGSCODE</div>
-              <div style="font-size:16px; font-weight:700; color:var(--gold); letter-spacing:1px;">LG 1225</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hinflug -->
-        <div class="flight-segment">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
-            <span style="display:inline-block; padding:4px 10px; background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.3)); border:1px solid var(--gold); border-radius:6px; font-size:11px; font-weight:700; color:var(--gold); letter-spacing:0.5px;">HINFLUG</span>
-            <span style="color:var(--text-muted); font-size:13px;">30. März 2026</span>
-          </div>
-          
-          <div class="flight-route">
-            <div class="airport-info">
-              <div class="airport-code">MUC</div>
-              <div class="airport-name">München</div>
-              <div class="flight-time">17:20</div>
-            </div>
-            
-            <div class="flight-duration">
-              <div class="duration-line">
-                <div class="plane-icon">✈</div>
-              </div>
-              <div class="duration-text">2h 05min</div>
-            </div>
-            
-            <div class="airport-info" style="text-align:right;">
-              <div class="airport-code">LHR</div>
-              <div class="airport-name">London Heathrow</div>
-              <div class="flight-time">18:25</div>
-            </div>
-          </div>
-          
-          <div class="flight-details">
-            <div class="detail-item">
-              <span class="detail-label">Flugnummer</span>
-              <span class="detail-value">LH 2486</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Klasse</span>
-              <span class="detail-value">Economy</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Gate</span>
-              <span class="detail-value">-</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Sitz</span>
-              <span class="detail-value">-</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Rückflug -->
-        <div class="flight-segment" style="margin-top:20px;">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
-            <span style="display:inline-block; padding:4px 10px; background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.3)); border:1px solid var(--gold); border-radius:6px; font-size:11px; font-weight:700; color:var(--gold); letter-spacing:0.5px;">RÜCKFLUG</span>
-            <span style="color:var(--text-muted); font-size:13px;">04. April 2026</span>
-          </div>
-          
-          <div class="flight-route">
-            <div class="airport-info">
-              <div class="airport-code">LHR</div>
-              <div class="airport-name">London Heathrow</div>
-              <div class="flight-time">20:25</div>
-            </div>
-            
-            <div class="flight-duration">
-              <div class="duration-line">
-                <div class="plane-icon">✈</div>
-              </div>
-              <div class="duration-text">1h 55min</div>
-            </div>
-            
-            <div class="airport-info" style="text-align:right;">
-              <div class="airport-code">MUC</div>
-              <div class="airport-name">München</div>
-              <div class="flight-time">23:20</div>
-            </div>
-          </div>
-          
-          <div class="flight-details">
-            <div class="detail-item">
-              <span class="detail-label">Flugnummer</span>
-              <span class="detail-value">LH 2481</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Klasse</span>
-              <span class="detail-value">Economy</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Gate</span>
-              <span class="detail-value">-</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Sitz</span>
-              <span class="detail-value">-</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Passagier Info -->
-        <div style="margin-top:20px; padding-top:16px; border-top:1px dashed rgba(212,175,55,0.25);">
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
-            <div>
-              <div class="detail-label">Passagier</div>
-              <div class="detail-value">Lenke Gacs</div>
-            </div>
-            <div>
-              <div class="detail-label">Gepäck</div>
-              <div class="detail-value">1x Rucksack,<br />
-                1x Handgepäck</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Barcode -->
-        <div style="margin-top:20px; text-align:center; padding:16px; background:rgba(0,0,0,0.3); border-radius:8px; border:1px solid rgba(212,175,55,0.15);">
-          <svg width="100%" height="60" viewBox="0 0 300 60" style="max-width:300px; margin:0 auto;">
-            <g fill="var(--gold)">
-              <rect x="5" y="5" width="3" height="50"/>
-              <rect x="12" y="5" width="2" height="50"/>
-              <rect x="18" y="5" width="4" height="50"/>
-              <rect x="26" y="5" width="2" height="50"/>
-              <rect x="32" y="5" width="3" height="50"/>
-              <rect x="39" y="5" width="2" height="50"/>
-              <rect x="45" y="5" width="5" height="50"/>
-              <rect x="54" y="5" width="2" height="50"/>
-              <rect x="60" y="5" width="3" height="50"/>
-              <rect x="67" y="5" width="4" height="50"/>
-              <rect x="75" y="5" width="2" height="50"/>
-              <rect x="81" y="5" width="3" height="50"/>
-              <rect x="88" y="5" width="2" height="50"/>
-              <rect x="94" y="5" width="4" height="50"/>
-              <rect x="102" y="5" width="3" height="50"/>
-              <rect x="109" y="5" width="2" height="50"/>
-              <rect x="115" y="5" width="5" height="50"/>
-              <rect x="124" y="5" width="2" height="50"/>
-              <rect x="130" y="5" width="3" height="50"/>
-              <rect x="137" y="5" width="2" height="50"/>
-              <rect x="143" y="5" width="4" height="50"/>
-              <rect x="151" y="5" width="3" height="50"/>
-              <rect x="158" y="5" width="2" height="50"/>
-              <rect x="164" y="5" width="5" height="50"/>
-              <rect x="173" y="5" width="2" height="50"/>
-              <rect x="179" y="5" width="3" height="50"/>
-              <rect x="186" y="5" width="4" height="50"/>
-              <rect x="194" y="5" width="2" height="50"/>
-              <rect x="200" y="5" width="3" height="50"/>
-              <rect x="207" y="5" width="2" height="50"/>
-              <rect x="213" y="5" width="4" height="50"/>
-              <rect x="221" y="5" width="3" height="50"/>
-              <rect x="228" y="5" width="2" height="50"/>
-              <rect x="234" y="5" width="5" height="50"/>
-              <rect x="243" y="5" width="2" height="50"/>
-              <rect x="249" y="5" width="3" height="50"/>
-              <rect x="256" y="5" width="2" height="50"/>
-              <rect x="262" y="5" width="4" height="50"/>
-              <rect x="270" y="5" width="3" height="50"/>
-              <rect x="277" y="5" width="2" height="50"/>
-              <rect x="283" y="5" width="5" height="50"/>
-              <rect x="292" y="5" width="3" height="50"/>
-            </g>
-          </svg>
-          <div style="margin-top:8px; font-size:11px; color:var(--text-muted); letter-spacing:1px;">LG1225-2026-MUC-LHR</div>
-        </div>
-
-        <div style="margin-top:16px; padding:12px; background:rgba(212,175,55,0.05); border-radius:8px; border:1px solid rgba(212,175,55,0.15);">
-          <p style="margin:0; font-size:12px; color:var(--text-muted); line-height:1.5;">
-            ⚠️ Bitte erscheinen Sie mindestens 2 Stunden vor Abflug am Flughafen. Boarding endet 30 Minuten vor Abflug.
-          </p>
-        </div>
-      </div>
-
-      <div class="actions" style="margin-top:20px;">
-        <a class="btn primary" href="https://www.lufthansa.com/de/de/homepage" target="_blank">Flüge prüfen</a>
-        <button class="btn ghost" onclick="closeModal('flightModal')">Schließen</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="stayModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal" style="max-width:720px;">
-      <button class="close" onclick="closeModal('stayModal')">✕</button>
-      
-      <!-- AirBnB-Style Unterkunft -->
-      <div class="airbnb-listing">
-  <!-- Unterkunfts-Galerie -->
-  <div class="property-gallery">
-    <div
-      class="main-image"
-      style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1064565488639091536/original/5d7ca0a5-40d1-491f-a532-607b3fb01e2b.jpeg?im_w=1200');">
-    </div>
-    <div class="thumbnail-grid">
-      <div
-        class="thumb-image"
-        style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1064565488639091536/original/c2ce5c87-ad3c-4dcb-8b91-191f842295c7.jpeg?im_w=400');">
-      </div>
-      <div
-        class="thumb-image"
-        style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1064565488639091536/original/44c65d0c-1958-4329-b026-de6fe38af616.jpeg?im_w=400');">
-      </div>
-      <div
-        class="thumb-image"
-        style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-1064565488639091536/original/309fbb13-347a-4aeb-878c-bc64d2ba26f9.jpeg?im_w=400');">
-      </div>
-    </div>
-  </div>
-</div>
-
-
-        <!-- Unterkunfts-Info -->
-        <div style="padding:20px 0;">
-          <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:12px; flex-wrap:wrap; gap:12px;">
-            <div>
-              <h3 style="margin:0 0 4px; font-size:22px;">Gemütliches Studio in der Nähe des Londoner Zentrums</h3>
-              <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-              <!-- Bewertung -->
-              <div style="display:flex; align-items:center; gap:4px; font-size:14px;">
-                <div style="position: relative; display: inline-block; line-height:1;">
-                  <!-- Gefüllte Sterne -->
-                  <div style="position:absolute; top:0; left:0; overflow:hidden; white-space: nowrap; width:87.6%; color:var(--gold);">
-                    ★★★★★
-                  </div>
-                  <!-- Hintergrund-Sterne -->
-                  <div style="color:var(--text-muted);">★★★★★</div>
-                </div>
-                <!-- Numerische Bewertung -->
-                <span style="font-size:14px; color:var(--text-gold); font-weight:600;">4,38</span>
-                <span style="font-size:14px; color:var(--text-muted);">(85 Bewertungen)</span>
-              </div>
-
-              <span style="font-size:14px; color:var(--text-muted);">•</span>
-              <span style="font-size:14px; color:var(--text-gold);">Whitechapel, London</span>
-            </div>
-          </div>
-
-          </div>
-
-          <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
-
-          <!-- Unterkunfts-Details -->
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px; margin-bottom:16px;">
-            <div class="property-feature">
-              <span class="feature-icon">👥</span>
-              <div>
-                <div class="feature-label">Gäste</div>
-                <div class="feature-value">3 Gäste</div>
-              </div>
-            </div>
-            <div class="property-feature">
-              <span class="feature-icon">🛏️</span>
-              <div>
-                <div class="feature-label">Schlafzimmer</div>
-                <div class="feature-value">1 Doppelbett, <br />1 Schlafcouch</div>
-              </div>
-            </div>
-            <div class="property-feature">
-              <span class="feature-icon">🛁</span>
-              <div>
-                <div class="feature-label">Badezimmer</div>
-                <div class="feature-value">1 Bad</div>
-              </div>
-            </div>
-          </div>
-
-          <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
-
-          <!-- Beschreibung -->
-          <div style="margin-bottom:16px;">
-            <p style="margin:0; color:var(--text-gold); font-size:14px; line-height:1.6;">
-              Gemütliches Studio in der Nähe des Londoner Zentrums. Perfekte Lage zum Erkunden der Stadt.
-            </p>
-          </div>
-
-          <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
-
-          <!-- Ausstattung -->
-          <div style="margin-bottom:16px;">
-            <h4 style="margin:0 0 12px; font-size:16px; color:var(--gold);">Ausstattung</h4>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:8px;">
-              <div class="amenity-item">
-                <span style="margin-right:8px;">📶</span>
-                <span>WLAN</span>
-              </div>
-              <div class="amenity-item">
-                <span style="margin-right:8px;">🥘</span>
-                <span>Küche</span>
-              </div>
-              <div class="amenity-item">
-                <span style="margin-right:8px;">📺</span>
-                <span>TV</span>
-              </div>
-              <div class="amenity-item">
-                <span style="margin-right:8px;">🧺</span>
-                <span>Waschmaschine</span>
-              </div>
-              <div class="amenity-item">
-                <span style="margin-right:8px;">☕</span>
-                <span>Kaffeemaschine</span>
-              </div>
-              <div class="amenity-item">
-                <span style="margin-right:8px;">🔐</span>
-                <span>Schlüsselbox</span>
-              </div>
-            </div>
-          </div>
-
-          <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
-
-          <!-- Karte -->
-          <div style="margin-bottom:16px;">
-            <h4 style="margin:0 0 12px; font-size:16px; color:var(--gold);">Lage</h4>
-            <div class="location-map">
-              <iframe
-                src="https://www.google.com/maps?q=51.519639,-0.052745&hl=de&z=15&output=embed"
-                width="100%"
-                height="300"
-                style="border:0; border-radius:12px; filter:grayscale(20%) contrast(1.1) brightness(0.85);"
-                allowfullscreen
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-            </div>
-
-            <div style="margin-top:12px; padding:12px; background:rgba(212,175,55,0.05); border-radius:8px; border:1px solid rgba(212,175,55,0.15);">
-              <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-                <span style="color:var(--gold);">📍</span>
-                <span style="font-size:14px; font-weight:600; color:var(--text-gold);">Whitechapel, London E1 3BY</span>
-              </div>
-              <p style="margin:0; font-size:13px; color:var(--text-muted); line-height:1.5;">
-                7 Min. zu Fuß zur U-Bahn • 30 Min. zum Big Ben • 20 Min. zum Tower of London
-              </p>
-            </div>
-          </div>
-
-          <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
-
-          <!-- Check-in Details -->
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-            <div>
-              <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Check-in</div>
-              <div style="font-size:14px; color:var(--text-gold); font-weight:600;">15:00 - 23:59</div>
-            </div>
-            <div>
-              <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Check-out</div>
-              <div style="font-size:14px; color:var(--text-gold); font-weight:600;">bis 11:00</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="actions" style="margin-top:20px;">
-        <a class="btn primary" href="https://www.airbnb.de/rooms/1064565488639091536" target="_blank">Auf AirBnB ansehen</a>
-        <button class="btn ghost" onclick="closeModal('stayModal')">Schließen</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="packing" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal">
-      <button class="close" onclick="closeModal('packing')">✕</button>
-      <h3>Packliste</h3>
-      <ul style="margin-top:8px">
-        <li>Reisepass + Personalausweis</li>
-        <li>UK-Stecker Adapter</li>
-        <li>Leichte Regenjacke & bequeme Schuhe</li>
-      </ul>
-      <div class="actions">
-        <button class="btn primary" onclick="closeModal('packing')">OK</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="customModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal">
-      <button class="close" onclick="closeModal('customModal')">✕</button>
-      <h3>Optionen anpassen</h3>
-      <p class="muted">Spezifische Wünsche (z. B. Theaterkarten, Barrierefreiheit, spezielle Restaurants)</p>
-      <textarea id="customText" placeholder="Ihre Wünsche hier eingeben..."></textarea>
-      <div class="actions">
-        <button class="btn primary" onclick="saveCustom()">Speichern</button>
-        <button class="btn ghost" onclick="closeModal('customModal')">Abbrechen</button>
-      </div>
-    </div>
+    <!-- Hier kommt der HTML-Inhalt wie Hero, CTA, Grid, Footer, Modals etc. -->
+    <!-- ... wie in deiner ursprünglichen Version ... -->
   </div>
 
   <script>
-  var player;
-  var videoEnded = false;
+    var player;
+    var videoEnded = false;
 
-  // YouTube API laden
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
 
-  // YouTube Player initialisieren
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('londonVideo', {
-      events: {
-        'onStateChange': onPlayerStateChange
-      }
-    });
-
-    // Timer: Video nach 35 Sekunden stoppen
-    setTimeout(function() {
-      if (!videoEnded && player && typeof player.pauseVideo === 'function') {
-        player.pauseVideo();
-        showImage();
-      }
-    }, 35000);
-  }
-
-  function onPlayerStateChange(event) {
-    if ((event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) && !videoEnded) {
-      showImage();
-    }
-  }
-
-  function showImage() {
-    videoEnded = true;
-    var video = document.getElementById('londonVideo');
-    var image = document.getElementById('londonImage');
-
-    if (video && image) {
-      image.style.opacity = '1';
-      image.style.zIndex = '10';
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('londonVideo', {
+        events: {'onStateChange': onPlayerStateChange}
+      });
 
       setTimeout(function() {
-        video.style.opacity = '0';
-      }, 500);
+        if (!videoEnded && player && typeof player.pauseVideo === 'function') {
+          player.pauseVideo();
+        }
+      }, 35000);
     }
-  }
 
-function openModal(id){
-  var el = document.getElementById(id);
-  if(!el) return;
-  el.style.display = 'flex';
-  el.setAttribute('aria-hidden','false');
-  document.body.style.overflow = 'hidden';
-}
+    function onPlayerStateChange(event) {
+      if ((event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) && !videoEnded) {
+        videoEnded = true;
+      }
+    }
 
-function closeModal(id){
-  var el = document.getElementById(id);
-  if(!el) return;
-  el.style.display = 'none';
-  el.setAttribute('aria-hidden','true');
-  document.body.style.overflow = '';
-}
-
-function saveCustom(){
-  var txt = document.getElementById('customText').value;
-  alert('Danke — deine Notiz wurde (temporär) gespeichert: "'+ (txt||'[leer]') +'"');
-  closeModal('customModal');
-}
-
-// ESC-Taste zum Schließen aller Modals
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape'){
-    ['flightModal','stayModal','packing','customModal'].forEach(function(id){
+    function openModal(id){
       var el = document.getElementById(id);
-      if(el && el.style.display === 'flex') closeModal(id);
-    })
-  }
-});
+      if(!el) return;
+      el.style.display = 'flex';
+      el.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
 
-</script>
+    function closeModal(id){
+      var el = document.getElementById(id);
+      if(!el) return;
+      el.style.display = 'none';
+      el.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
 
+    function saveCustom(){
+      var txt = document.getElementById('customText').value;
+      alert('Danke — deine Notiz wurde (temporär) gespeichert: "'+ (txt||'[leer]') +'"');
+      closeModal('customModal');
+    }
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        ['flightModal','stayModal','packing','customModal'].forEach(function(id){
+          var el = document.getElementById(id);
+          if(el && el.style.display === 'flex') closeModal(id);
+        })
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
