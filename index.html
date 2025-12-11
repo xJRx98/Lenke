@@ -75,6 +75,7 @@
       pointer-events:none; 
       border:0; 
       filter:contrast(0.9) saturate(0.85) brightness(0.85);
+      transition:opacity 1s ease;
     }
 
     .overlay{
@@ -485,6 +486,13 @@
                 allow="autoplay; encrypted-media" frameborder="0" title="London Video"></iframe>
       </div>
 
+      <div class="overlay">
+        <div class="hero-content">
+          <div class="badge">Städtereise • 5 Nächte</div>
+          <h1>Elegante Reise nach London</h1>
+          <p>Eine stilvolle Mischung aus Kultur, feinen Restaurants und ikonischen Sehenswürdigkeiten — perfekt komponiert für anspruchsvolle Entdecker.</p>
+        </div>
+      </div>
       
       <!-- CTA Buttons unter dem Video -->
       <div class="cta-section">
@@ -612,6 +620,66 @@
   </div>
 
   <script>
+    // YouTube API für Video-Kontrolle
+    var player;
+    var videoEnded = false;
+    
+    // YouTube API laden
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+    // YouTube Player initialisieren
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('londonVideo', {
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+      
+      // Timer für 35 Sekunden
+      setTimeout(function() {
+        if (!videoEnded && player && player.pauseVideo) {
+          player.pauseVideo();
+          showImage();
+        }
+      }, 35000);
+    }
+    
+    function onPlayerStateChange(event) {
+      // Video wurde pausiert oder beendet
+      if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+        if (!videoEnded) {
+          showImage();
+        }
+      }
+    }
+    
+    function showImage() {
+      videoEnded = true;
+      var video = document.getElementById('londonVideo');
+      var image = document.getElementById('londonImage');
+      
+      if (video && image) {
+        // Bild einblenden
+        image.style.opacity = '1';
+        image.style.zIndex = '10';
+        
+        // Video ausblenden (verzögert)
+        setTimeout(function() {
+          video.style.opacity = '0';
+        }, 500);
+      }
+    }
+    
+    // Fallback: Falls YouTube API nicht lädt, nach 35 Sekunden Bild anzeigen
+    setTimeout(function() {
+      if (!videoEnded) {
+        showImage();
+      }
+    }, 35500);
+
     function openModal(id){
       var el = document.getElementById(id);
       if(!el) return;
