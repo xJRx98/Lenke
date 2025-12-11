@@ -804,29 +804,25 @@
        <main class="card" aria-labelledby="itineraryHeading">
   <section id="gallery" style="margin-top:18px">
     <h3 style="margin:0 0 8px">Galerie</h3>
-    <div class="gallery-container">
+    <div class="gallery-container" style="display:flex; align-items:center; justify-content:center;">
       <button class="nav left" aria-label="Vorheriges Bild">&larr;</button>
-      <img id="galleryImage" src="" alt="London Foto" width="800" height="500">
+      <img id="galleryImage" src="" alt="London Foto" width="800" height="500" style="margin:0 10px;">
       <button class="nav right" aria-label="Nächstes Bild">&rarr;</button>
     </div>
   </section>
 </main>
 
 <script>
-  const baseUrl = 'https://source.unsplash.com/800x500/?london';
-  const totalImages = 6; // Anzahl der Bilder in der Galerie
+  const totalImages = 6;
   let currentIndex = 0;
-
   const galleryImage = document.getElementById('galleryImage');
 
   function showImage(index) {
-    // Füge für jedes Bild eine eindeutige Zahl hinzu
-    galleryImage.src = `${baseUrl}&sig=${index}`;
+    galleryImage.src = `https://source.unsplash.com/800x500/?london&sig=${index}`;
   }
 
   showImage(currentIndex);
 
-  // Buttons
   document.querySelector('.nav.left').addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + totalImages) % totalImages;
     showImage(currentIndex);
@@ -837,7 +833,6 @@
     showImage(currentIndex);
   });
 
-  // Pfeiltasten
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
       currentIndex = (currentIndex - 1 + totalImages) % totalImages;
@@ -848,6 +843,7 @@
     }
   });
 </script>
+
 
     </div>
 
@@ -1461,6 +1457,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
