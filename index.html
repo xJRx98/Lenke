@@ -766,7 +766,7 @@
         <p class="muted">Alles Wichtige auf einen Blick</p>
         <ul class="info-list" style="margin-top:12px">
           <li><span>Reiseziel</span><strong>London, UK</strong></li>
-          <li><span>Reisedauer</span><strong>30.03.2026 - 04.04.2026</strong></li>
+          <li><span>Reisedaten</span><strong>30.03.2026 - 04.04.2026</strong></li>
           <li><span>Abflughafen</span><strong>MUC (München)</strong></li>
           <li><span>Zielflughafen</span><strong>LHR (London Heathrow)</strong></li>
           <li><span>Währung</span><strong>GBP</strong></li>
@@ -814,29 +814,26 @@
 
 <script>
   // Zufällige London-Bilder von Unsplash
-  const photos = [
-    'https://source.unsplash.com/800x500/?london,big-ben',
-    'https://source.unsplash.com/800x500/?london,tower-bridge',
+  const galleryPhotos = [
+    'https://source.unsplash.com/800x500/?london,bigben',
+    'https://source.unsplash.com/800x500/?london,towerbridge',
     'https://source.unsplash.com/800x500/?london,eye',
     'https://source.unsplash.com/800x500/?london,city',
     'https://source.unsplash.com/800x500/?london,street',
     'https://source.unsplash.com/800x500/?london,river'
   ];
 
-  // Galerie mischen
-  const galleryPhotos = photos.sort(() => 0.5 - Math.random());
   let currentIndex = 0;
-
   const galleryImage = document.getElementById('galleryImage');
 
-  // Erstes Bild anzeigen
   function showImage(index) {
-    galleryImage.src = galleryPhotos[index] + '&' + new Date().getTime(); // Cache umgehen
+    // Cache umgehen mit unique query param
+    galleryImage.src = galleryPhotos[index] + '&' + new Date().getTime();
   }
 
   showImage(currentIndex);
 
-  // Navigation mit Buttons
+  // Buttons
   document.querySelector('.nav.left').addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
     showImage(currentIndex);
@@ -847,7 +844,7 @@
     showImage(currentIndex);
   });
 
-  // Navigation mit Pfeiltasten
+  // Pfeiltasten
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
       currentIndex = (currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
@@ -858,10 +855,6 @@
     }
   });
 </script>
-
-<style>
-  
-</style>
 
     </div>
 
@@ -1475,6 +1468,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
