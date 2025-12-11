@@ -649,6 +649,31 @@
     /* Modal scrollbar */
     .modal{ max-height:90vh; overflow-y:auto; padding:24px; }
 
+    /* -----------------------
+       Flight modal actions (make buttons share full width)
+       ----------------------- */
+    /* Make the actions container inside the flight modal expand and make its children share width */
+    #flightModal .modal .actions{
+      display:flex;
+      gap:12px;
+      margin-top:20px;
+      width:100%;
+    }
+    /* Buttons inside flight modal should split the available width equally */
+    #flightModal .modal .actions .btn{
+      flex:1 1 0;
+      min-width:0; /* allow shrinking in tight spaces */
+    }
+    /* On very small screens stack vertically for easier tapping */
+    @media(max-width:480px){
+      #flightModal .modal .actions{
+        flex-direction:column;
+      }
+      #flightModal .modal .actions .btn{
+        width:100%;
+      }
+    }
+
   </style>
 </head>
 <body>
