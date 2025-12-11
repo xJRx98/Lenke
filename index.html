@@ -753,7 +753,7 @@
     src="https://www.youtube.com/embed/_U1up-tK9w8?autoplay=1&mute=1&controls=0&loop=1&playlist=_U1up-tK9w8&playsinline=1&rel=0&modestbranding=1"
     allow="autoplay; encrypted-media" frameborder="0" title="London Video"></iframe>
 
-  <!-- Overlay-Bild: erscheint nach 35s / wenn Video pausiert -->
+  <!-- Overlay-Bild: erscheint nach 30s / wenn Video pausiert -->
   <img id="londonImage" alt="London City" src="" aria-hidden="true" />
 </div>
 
@@ -1297,13 +1297,13 @@
       }
     });
 
-    // Timer: Video nach 35 Sekunden stoppen
+    // Timer: Video nach 30 Sekunden stoppen
     setTimeout(function() {
       if (!videoEnded && player && typeof player.pauseVideo === 'function') {
         player.pauseVideo();
         showImage();
       }
-    }, 35000);
+    }, 30000);
   }
 
   function onPlayerStateChange(event) {
@@ -1475,6 +1475,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
