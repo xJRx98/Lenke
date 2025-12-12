@@ -106,7 +106,7 @@
   width: 100%;
   max-width: 100%;       /* verhindert, dass es größer als Container wird */
   border-radius: 10px;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16/9;
   object-fit: cover;
 }
 
@@ -115,7 +115,7 @@
   #galleryImage {
     width: 100%;
     height: auto;         /* proportional skalieren */
-    aspect-ratio: auto;   /* Höhe passt sich automatisch an */
+    aspect-ratio: 16/9;   /* Höhe passt sich automatisch an */
   }
 
   .gallery-container .nav {
@@ -779,7 +779,7 @@
     <section class="hero" aria-label="London Hero">
       <div class="video-wrap">
   <!-- Nur Bild, kein Video -->
-  <img id="londonImage" alt="London City" src="./assets/images/London-City.jpg" style="width:100%; height:100%; object-fit:cover; display:block;" />
+  <img id="londonImage" alt="London City" src="./assets/images/London.png" style="width:100%; height:100%; object-fit:cover; display:block;" />
 </div>
 
 
@@ -1512,6 +1512,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
