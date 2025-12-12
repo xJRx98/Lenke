@@ -134,7 +134,7 @@
   height:100%;
   object-fit:cover;
   border:0;
-  opacity:0;
+  opacity:1;
   transition:opacity 600ms ease, transform 600ms ease;
   transform:scale(1.02);
   z-index:5; /* iframe default 0; .overlay bleibt über dem Bild (falls .overlay z-index höher ist) */
@@ -779,13 +779,9 @@
     <!-- HERO -->
     <section class="hero" aria-label="London Hero">
       <div class="video-wrap">
-  <iframe id="londonVideo"
-    src="https://www.youtube.com/embed/_U1up-tK9w8?autoplay=1&mute=1&controls=0&loop=1&playlist=_U1up-tK9w8&playsinline=1&rel=0&modestbranding=1"
-    allow="autoplay; encrypted-media" frameborder="0" title="London Video"></iframe>
-
-  <!-- Overlay-Bild: erscheint nach 30s / wenn Video pausiert -->
-  <img id="londonImage" alt="London City" src="" aria-hidden="true" />
-</div>
+        <img id="londonImage" alt="London City" src="./assets/images/London.png" style="width:100%; height:100%; object-fit:cover; display:block;" />
+      </div>
+    </section>
 
 
 
@@ -1517,3 +1513,4 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
