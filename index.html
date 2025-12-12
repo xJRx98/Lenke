@@ -317,13 +317,23 @@
     }
 
    .checkout-card {
-  background: rgba(12, 35, 64, 0.05);        /* leichtes Lufthansa-Blau */
+  background: rgba(222, 222, 222, 0.05);        /* leichtes Lufthansa-Blau */
   border: 1px solid rgba(12, 35, 64, 0.15);
   border-radius: 12px;
   padding: 12px 16px;
   text-align: right;                         /* alles nach rechts */
 }
 
+   
+   .checkin-card {
+  background: rgba(222, 222, 222, 0.05);        /* leichtes Lufthansa-Blau */
+  border: 1px solid rgba(12, 35, 64, 0.15);
+  border-radius: 12px;
+  padding: 12px 16px;
+  text-align: left;                         /* alles nach rechts */
+}
+
+   
     @media(min-width:768px){
       .card{padding:24px;}
     }
@@ -1404,13 +1414,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <!-- Check-in Details -->
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-  <div>
-    <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Check-in</div>
-    <div style="font-size:14px; color:var(--text-gold); font-weight:600;">15:00 - 23:59</div>
+  <div class="checkin-card">
+    <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Check-In</div>
+    <div style="font-size:14px; color:var(--text-gold); font-weight:600;">ab 15:00</div>
   </div>
 
   <div class="checkout-card">
-    <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Check-out</div>
+    <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Check-Out</div>
     <div style="font-size:14px; color:var(--text-gold); font-weight:600;">bis 11:00</div>
   </div>
 </div>
@@ -1660,6 +1670,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
