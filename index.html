@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>Lenke - London 2026</title>
+  <title>Lenke</title>
   <style>
-    /* GB Flag inspired palette - Red, Blue, White */
+    /* Elegant black & gold palette */
     :root{
       --gold:#C8102E;
       --gold-light:#E03E52;
@@ -28,11 +28,12 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
+
     html,body{
       height:100%; 
       margin:0; 
-      background:linear-gradient(180deg, #ffffff, #f8f9fa); 
-      color:var(--text-dark); 
+      background:linear-gradient(180deg, #0a0a0a, var(--bg)); 
+      color:var(--text-white); 
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       font-size:16px;
@@ -55,100 +56,108 @@
       overflow:hidden; 
       box-shadow:var(--shadow);
       margin-bottom:20px;
-      border:2px solid var(--blue);
+      border:1px solid rgba(212,175,55,0.2);
     }
     .video-wrap{
       position:relative; 
       width:100%; 
       padding-bottom:65%;
-      background:linear-gradient(180deg,#f8f9fa,#ffffff);
+      background:linear-gradient(180deg,#1a1a1a,#0f0f0f);
     }
 
-    .gallery-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 100%;
-      width: 100%;
-      margin: 0 auto;
-      overflow: hidden;
-    }
+ .gallery-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  width: 100%;          /* passt sich der Bildschirmbreite an */
+  margin: 0 auto;
+  overflow: hidden;     /* verhindert Überstehen */
+}
 
-    .gallery-container .nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--blue);
-      color: white;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      padding: 0;
-      box-sizing: border-box;
-      border: 2px solid var(--blue-light);
-    }
+.gallery-container .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.4);
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .gallery-container .nav:hover {
-      background: var(--blue-light);
-    }
+.gallery-container .nav.left {
+  left: 10px;
+}
 
-    .gallery-container .nav.left {
-      left: 10px;
-    }
+.gallery-container .nav.right {
+  right: 10px;
+}
 
-    .gallery-container .nav.right {
-      right: 10px;
-    }
+#galleryImage {
+  width: 100%;
+  max-width: 100%;       /* verhindert, dass es größer als Container wird */
+  border-radius: 10px;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
 
-    #galleryImage {
-      width: 100%;
-      max-width: 100%;
-      border-radius: 10px;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      border: 2px solid var(--blue);
-    }
+/* Anpassung für kleinere Bildschirme */
+@media(max-width:600px){
+  #galleryImage {
+    width: 100%;
+    height: auto;         /* proportional skalieren */
+    aspect-ratio: auto;   /* Höhe passt sich automatisch an */
+  }
 
-    @media(max-width:600px){
-      #galleryImage {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16/9;
-      }
+  .gallery-container .nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+}
 
-      .gallery-container .nav {
-        width: 36px;
-        height: 36px;
-        font-size: 1.3rem;
-      }
-    }
 
     #londonImage{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border:0;
-      opacity:1;
-      transition:opacity 600ms ease, transform 600ms ease;
-      transform:scale(1);
-      z-index:5;
-      pointer-events:none;
-      background-color:#fff;
-    }
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border:0;
+  opacity:0;
+  transition:opacity 600ms ease, transform 600ms ease;
+  transform:scale(1.02);
+  z-index:5; /* iframe default 0; .overlay bleibt über dem Bild (falls .overlay z-index höher ist) */
+  pointer-events:none; /* Bild nicht klickbar, erlaubt Interaktionen mit darüberliegenden Elementen */
+  background-color:#000;
+}
 
-    .overlay{ z-index:10; }
+/* falls .overlay noch keinen z-index hat, stell sicher, dass sie über dem Bild liegt */
+.overlay{ z-index:10; }
     
     @media(min-width:768px){
       .video-wrap{padding-bottom:56%;}
+    }
+    .hero iframe{
+      position:absolute; 
+      top:0; 
+      left:0; 
+      width:100%; 
+      height:100%; 
+      pointer-events:none; 
+      border:0; 
+      filter:contrast(0.9) saturate(0.85) brightness(0.85);
+      transition:opacity 1s ease;
     }
 
     .overlay{
@@ -158,7 +167,7 @@
       flex-direction:column; 
       justify-content:flex-end; 
       padding:20px; 
-      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.85) 100%);
+      background: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.85) 100%);
     }
     @media(min-width:768px){
       .overlay{padding:28px;}
@@ -169,30 +178,29 @@
     }
     
     .hero h1{
-      color:var(--red); 
+      color:var(--gold); 
       margin:0 0 8px; 
       font-size:clamp(24px, 5vw, 32px); 
       font-weight:700; 
       letter-spacing:-0.4px; 
-      text-shadow:0 4px 20px rgba(200,16,46,0.3);
+      text-shadow:0 4px 20px rgba(212,175,55,0.5);
       line-height:1.2;
     }
     .hero p{
-      color:var(--blue); 
+      color:var(--text-gold); 
       margin:0; 
       font-size:clamp(14px, 2.5vw, 15px); 
       max-width:680px;
       line-height:1.5;
-      font-weight:600;
     }
 
     /* Buttons unter dem Video */
     .cta-section{
-      background:linear-gradient(180deg, rgba(248,249,250,0.95), rgba(255,255,255,0.98));
+      background:linear-gradient(180deg, rgba(26,26,26,0.95), rgba(15,15,15,0.98));
       backdrop-filter:blur(10px);
       -webkit-backdrop-filter:blur(10px);
       padding:20px;
-      border-top:2px solid var(--blue);
+      border-top:1px solid rgba(212,175,55,0.15);
     }
     @media(min-width:768px){
       .cta-section{padding:24px 28px;}
@@ -227,9 +235,9 @@
     }
     
     .btn.primary{
-      background:linear-gradient(135deg, var(--red-dark) 0%, var(--red) 50%, var(--red-light) 100%); 
-      color:var(--white); 
-      box-shadow:var(--shadow-accent);
+      background:linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%); 
+      color:var(--black); 
+      box-shadow:var(--shadow-gold);
       font-weight:700;
     }
     .btn.primary::before{
@@ -244,31 +252,31 @@
       transform:translateX(100%);
     }
     .btn.primary:hover{
-      box-shadow:0 12px 40px rgba(200,16,46,0.4);
+      box-shadow:0 12px 40px rgba(212,175,55,0.4);
       transform:translateY(-2px);
     }
     
     .btn.secondary{
-      background:rgba(1,33,105,0.1); 
-      border:2px solid var(--blue);
-      color:var(--blue);
+      background:rgba(212,175,55,0.1); 
+      border:1.5px solid var(--gold);
+      color:var(--gold);
     }
     .btn.secondary:hover{
-      background:var(--blue);
-      border-color:var(--blue-light);
-      color:var(--white);
-      box-shadow:0 8px 24px rgba(1,33,105,0.3);
+      background:rgba(212,175,55,0.2);
+      border-color:var(--gold-light);
+      color:var(--gold-light);
+      box-shadow:0 8px 24px rgba(212,175,55,0.2);
     }
     
     .btn.ghost{
-      background:rgba(200,16,46,0.05); 
-      border:2px solid var(--red); 
-      color:var(--red);
+      background:rgba(255,255,255,0.05); 
+      border:1.5px solid rgba(255,255,255,0.15); 
+      color:var(--text-gold);
     }
     .btn.ghost:hover{
-      background:var(--red);
-      border-color:var(--red-light);
-      color:var(--white);
+      background:rgba(255,255,255,0.1);
+      border-color:rgba(212,175,55,0.3);
+      color:var(--gold-light);
     }
 
     .badge{
@@ -276,9 +284,9 @@
       font-size:13px; 
       padding:8px 14px; 
       border-radius:999px; 
-      background:linear-gradient(135deg, rgba(200,16,46,0.15), rgba(200,16,46,0.25)); 
-      border:1px solid var(--red);
-      color:var(--red); 
+      background:linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.25)); 
+      border:1px solid rgba(212,175,55,0.3);
+      color:var(--gold); 
       font-weight:600;
       margin-bottom:12px;
     }
@@ -299,7 +307,7 @@
       border-radius:var(--radius); 
       padding:20px; 
       box-shadow:var(--shadow-sm);
-      border:2px solid var(--blue);
+      border:1px solid rgba(212,175,55,0.15);
     }
     @media(min-width:768px){
       .card{padding:24px;}
@@ -312,13 +320,13 @@
       font-size:clamp(18px, 3vw, 20px); 
       font-weight:700; 
       letter-spacing:-0.3px;
-      color:var(--red);
+      color:var(--gold);
     }
     h3{
       font-size:clamp(16px, 2.8vw, 18px);
       font-weight:700;
       letter-spacing:-0.2px;
-      color:var(--red);
+      color:var(--gold);
     }
 
     .info-list{list-style:none; padding:0; margin:0;}
@@ -327,15 +335,15 @@
       justify-content:space-between; 
       align-items:center;
       padding:12px 0; 
-      border-bottom:1px solid rgba(1,33,105,0.15); 
+      border-bottom:1px solid rgba(212,175,55,0.1); 
       font-size:15px;
       gap:12px;
-      color:var(--text-dark);
+      color:var(--text-gold);
     }
     .info-list li:last-child{border-bottom:none;}
     .info-list li strong{
       font-weight:600;
-      color:var(--blue);
+      color:var(--gold-light);
     }
 
     /* itinerary */
@@ -344,11 +352,55 @@
       padding:10px 0;
       font-size:15px;
       line-height:1.6;
-      color:var(--text-dark);
+      color:var(--text-gold);
     }
     .itinerary li strong{
-      color:var(--red);
+      color:var(--gold);
       font-weight:600;
+    }
+
+    /* gallery */
+    .gallery{
+      display:grid; 
+      grid-template-columns:repeat(2,1fr); 
+      gap:12px; 
+      margin-top:12px;
+    }
+    @media(min-width:600px){
+      .gallery{grid-template-columns:repeat(4,1fr);}
+    }
+    .photo{
+      height:100px; 
+      border-radius:var(--radius-sm); 
+      background:linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); 
+      display:flex; 
+      align-items:flex-end; 
+      padding:12px; 
+      font-weight:700; 
+      font-size:14px;
+      color:var(--gold); 
+      box-shadow:var(--shadow-sm);
+      border:1px solid rgba(212,175,55,0.2);
+      transition:all 0.3s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .photo::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, transparent, rgba(212,175,55,0.1));
+      opacity:0;
+      transition:opacity 0.3s;
+    }
+    .photo:hover::before{
+      opacity:1;
+    }
+    @media(min-width:768px){
+      .photo{height:120px; font-size:15px;}
+    }
+    .photo:active{
+      transform:scale(0.98);
     }
 
     /* footer */
@@ -358,7 +410,7 @@
       text-align:center; 
       color:var(--text-muted); 
       font-size:13px;
-      border-top:2px solid var(--blue);
+      border-top:1px solid rgba(212,175,55,0.1);
     }
 
     /* modal */
@@ -368,19 +420,19 @@
       display:none; 
       align-items:center; 
       justify-content:center; 
-      background:rgba(1,33,105,0.85); 
+      background:rgba(0,0,0,0.85); 
       backdrop-filter:blur(8px);
       -webkit-backdrop-filter:blur(8px);
       z-index:9999;
       padding:20px;
     }
     .modal{
-      background:linear-gradient(135deg, var(--white), var(--white-off)); 
+      background:linear-gradient(135deg, var(--black-light), var(--grey)); 
       padding:24px; 
       width:100%; 
       max-width:560px; 
       border-radius:var(--radius); 
-      box-shadow:0 32px 64px rgba(1,33,105,0.5), 0 0 0 2px var(--blue);
+      box-shadow:0 32px 64px rgba(0,0,0,0.8), 0 0 0 1px rgba(212,175,55,0.3);
       max-height:90vh;
       overflow-y:auto;
       position:relative;
@@ -388,17 +440,17 @@
     .modal h3{
       margin:0 0 8px;
       padding-right:32px;
-      color:var(--red);
+      color:var(--gold);
     }
     .modal .close{
       position:absolute;
       top:20px;
       right:20px;
-      background:rgba(200,16,46,0.1);
-      border:2px solid var(--red);
+      background:rgba(212,175,55,0.1);
+      border:1px solid rgba(212,175,55,0.3);
       font-size:20px;
       cursor:pointer;
-      color:var(--red);
+      color:var(--gold);
       width:32px;
       height:32px;
       display:flex;
@@ -408,8 +460,8 @@
       transition:all 0.2s ease;
     }
     .modal .close:hover{
-      background:var(--red);
-      color:var(--white);
+      background:rgba(212,175,55,0.2);
+      color:var(--gold-light);
       transform:rotate(90deg);
     }
     .modal .actions{
@@ -427,10 +479,10 @@
       padding:6px 0;
       font-size:15px;
       line-height:1.6;
-      color:var(--text-dark);
+      color:var(--text-gold);
     }
     .modal ul li strong{
-      color:var(--blue);
+      color:var(--gold-light);
     }
     .modal textarea{
       width:100%; 
@@ -438,9 +490,9 @@
       margin-top:12px; 
       padding:12px; 
       border-radius:var(--radius-sm); 
-      border:2px solid var(--blue);
-      background:var(--white);
-      color:var(--text-dark);
+      border:1.5px solid rgba(212,175,55,0.3);
+      background:rgba(0,0,0,0.3);
+      color:var(--text-gold);
       font-family:inherit;
       font-size:15px;
       resize:vertical;
@@ -448,8 +500,8 @@
     }
     .modal textarea:focus{
       outline:none;
-      border-color:var(--red);
-      box-shadow:0 0 0 3px rgba(200,16,46,0.1);
+      border-color:var(--gold);
+      background:rgba(0,0,0,0.5);
     }
     .modal textarea::placeholder{
       color:var(--text-muted);
@@ -459,6 +511,8 @@
     @media(max-width:480px){
       .cta-row{flex-direction:column;}
       .cta-row .btn{width:100%;}
+      .gallery{gap:10px;}
+      .photo{height:90px; font-size:13px; padding:10px;}
       .modal{padding:20px;}
     }
 
@@ -467,7 +521,7 @@
 
     /* accessibility */
     :focus-visible{
-      outline:3px solid var(--red); 
+      outline:3px solid rgba(212,175,55,0.5); 
       outline-offset:3px;
       border-radius:4px;
     }
@@ -504,17 +558,17 @@
 
     /* Boarding Pass Styles */
     .boarding-pass{
-      background:linear-gradient(135deg, rgba(248,249,250,0.9), rgba(255,255,255,0.9));
-      border:2px solid var(--blue);
+      background:linear-gradient(135deg, rgba(26,26,26,0.6), rgba(42,42,42,0.6));
+      border:1px solid rgba(212,175,55,0.25);
       border-radius:12px;
       padding:20px;
     }
     
     .flight-segment{
-      background:rgba(1,33,105,0.05);
+      background:rgba(0,0,0,0.2);
       border-radius:10px;
       padding:16px;
-      border:2px solid var(--blue);
+      border:1px solid rgba(212,175,55,0.1);
     }
     
     .flight-route{
@@ -534,7 +588,7 @@
     .airport-code{
       font-size:28px;
       font-weight:700;
-      color:var(--red);
+      color:var(--gold);
       letter-spacing:-0.5px;
       line-height:1;
     }
@@ -549,7 +603,7 @@
     .flight-time{
       font-size:18px;
       font-weight:600;
-      color:var(--blue);
+      color:var(--text-gold);
       margin-top:4px;
     }
     
@@ -565,7 +619,7 @@
       position:relative;
       width:100%;
       height:2px;
-      background:linear-gradient(90deg, var(--blue), var(--red), var(--blue));
+      background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
       border-radius:2px;
     }
     
@@ -575,10 +629,9 @@
       left:50%;
       transform:translate(-50%, -50%);
       font-size:16px;
-      background:var(--white);
+      background:var(--card);
       padding:2px 4px;
       border-radius:4px;
-      border:1px solid var(--blue);
     }
     
     .duration-text{
@@ -592,7 +645,7 @@
       grid-template-columns:repeat(4, 1fr);
       gap:12px;
       padding-top:12px;
-      border-top:1px dashed var(--blue);
+      border-top:1px dashed rgba(212,175,55,0.2);
     }
     
     .detail-item{
@@ -611,7 +664,7 @@
     .detail-value{
       font-size:14px;
       font-weight:600;
-      color:var(--blue);
+      color:var(--text-gold);
     }
     
     @media(max-width:480px){
@@ -645,156 +698,55 @@
 
     /* AirBnB-Style Listing */
     .airbnb-listing{
-      color:var(--text-dark);
+      color:var(--text-gold);
     }
 
-    .property-gallery{ 
-      position:relative; 
-      display:grid; 
-      grid-template-columns:2fr 1fr; 
-      gap:8px; 
-      margin-bottom:16px; 
-      height:320px; 
-    }
-    .main-image{ 
-      background-size:cover; 
-      background-position:center; 
-      border-radius:12px 0 0 12px; 
-      position:relative; 
-      overflow:hidden; 
-      cursor:pointer;
-      border:2px solid var(--blue);
-    }
-    .main-image:focus{ 
-      outline:3px solid var(--red); 
-      outline-offset:4px; 
-    }
-    .thumbnail-grid{ 
-      display:grid; 
-      grid-template-rows:1fr 1fr 1fr; 
-      gap:8px; 
-    }
-    .thumb-image{ 
-      background-size:cover; 
-      background-position:center; 
-      border-radius:8px; 
-      overflow:hidden; 
-      cursor:pointer; 
-      border:2px solid var(--blue); 
-      transition:transform .18s ease, border-color .18s ease; 
-    }
-    .thumb-image:hover, .thumb-image:focus{ 
-      transform:translateY(-4px); 
-      border-color:var(--red); 
-    }
-    .thumb-image.active{ 
-      border-color:var(--red); 
-      box-shadow:0 6px 18px rgba(200,16,46,0.4); 
-    }
+    /* -----------------------
+       Gallery & Lightbox styles
+       (keine weiteren Änderungen)
+       ----------------------- */
+    .property-gallery{ position:relative; display:grid; grid-template-columns:2fr 1fr; gap:8px; margin-bottom:16px; height:320px; }
+    .main-image{ background-size:cover; background-position:center; border-radius:12px 0 0 12px; position:relative; overflow:hidden; cursor:pointer; }
+    .main-image:focus{ outline:3px solid rgba(212,175,55,0.25); outline-offset:4px; }
+    .thumbnail-grid{ display:grid; grid-template-rows:1fr 1fr 1fr; gap:8px; }
+    .thumb-image{ background-size:cover; background-position:center; border-radius:0; overflow:hidden; cursor:pointer; border:2px solid transparent; transition:transform .18s ease, border-color .18s ease; }
+    .thumb-image:hover, .thumb-image:focus{ transform:translateY(-4px); border-color:rgba(212,175,55,0.25); }
+    .thumb-image.active{ border-color:var(--gold); box-shadow:0 6px 18px rgba(0,0,0,0.6); }
 
-    .lightbox-backdrop{ 
-      position:fixed; 
-      inset:0; 
-      display:none; 
-      align-items:center; 
-      justify-content:center; 
-      background:rgba(1,33,105,0.85); 
-      z-index:10000; 
-      padding:20px; 
-    }
-    .lightbox{ 
-      max-width:1100px; 
-      width:100%; 
-      max-height:90vh; 
-      border-radius:12px; 
-      overflow:hidden; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      position:relative; 
-    }
-    .lightbox img{ 
-      width:100%; 
-      height:auto; 
-      max-height:88vh; 
-      object-fit:contain; 
-      display:block; 
-      background:var(--white); 
-    }
-    .lightbox .close{ 
-      position:absolute; 
-      top:12px; 
-      right:12px; 
-      background:var(--red); 
-      border:2px solid var(--red-light); 
-      color:var(--white); 
-      width:40px; 
-      height:40px; 
-      border-radius:8px; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      cursor:pointer; 
-    }
-    .lightbox .close:hover{
-      background:var(--red-light);
-    }
-    .lightbox .nav{ 
-      position:absolute; 
-      top:50%; 
-      transform:translateY(-50%); 
-      width:48px; 
-      height:48px; 
-      border-radius:999px; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      background:var(--blue); 
-      color:var(--white); 
-      cursor:pointer;
-      border:2px solid var(--blue-light);
-    }
-    .lightbox .nav:hover{
-      background:var(--blue-light);
-    }
+    .lightbox-backdrop{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.85); z-index:10000; padding:20px; }
+    .lightbox{ max-width:1100px; width:100%; max-height:90vh; border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; position:relative; }
+    .lightbox img{ width:100%; height:auto; max-height:88vh; object-fit:contain; display:block; background:#000; }
+    .lightbox .close{ position:absolute; top:12px; right:12px; background:rgba(212,175,55,0.12); border:1px solid rgba(212,175,55,0.25); color:var(--gold); width:40px; height:40px; border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+    .lightbox .nav{ position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:999px; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.35); color:var(--text-gold); cursor:pointer; }
     .lightbox .prev{ left:12px; }
     .lightbox .next{ right:12px; }
 
     @media(max-width:600px){
-      .property-gallery{ 
-        grid-template-columns:1fr; 
-        grid-template-rows:200px auto; 
-        height:auto; 
-      }
-      .thumbnail-grid{ 
-        display:grid; 
-        grid-auto-flow:column; 
-        grid-auto-columns:1fr; 
-        grid-template-rows:none; 
-        overflow-x:auto; 
-        gap:8px; 
-        padding-bottom:6px; 
-      }
-      .thumb-image{ 
-        min-width:80px; 
-        height:80px; 
-      }
-      .main-image{ 
-        height:200px; 
-        border-radius:12px 12px 0 0; 
-      }
+      .property-gallery{ grid-template-columns:1fr; grid-template-rows:200px auto; height:auto; }
+      .thumbnail-grid{ display:grid; grid-auto-flow:column; grid-auto-columns:1fr; grid-template-rows:none; overflow-x:auto; gap:8px; padding-bottom:6px; }
+      .thumb-image{ min-width:80px; height:80px; }
+      .main-image{ height:200px; border-radius:12px 12px 0 0; }
     }
 
+    /* Modal scrollbar */
+    .modal{ max-height:90vh; overflow-y:auto; padding:24px; }
+
+    /* -----------------------
+       Flight modal actions (make buttons share full width)
+       ----------------------- */
+    /* Make the actions container inside the flight modal expand and make its children share width */
     #flightModal .modal .actions{
       display:flex;
       gap:12px;
       margin-top:20px;
       width:100%;
     }
+    /* Buttons inside flight modal should split the available width equally */
     #flightModal .modal .actions .btn{
       flex:1 1 0;
-      min-width:0;
+      min-width:0; /* allow shrinking in tight spaces */
     }
+    /* On very small screens stack vertically for easier tapping */
     @media(max-width:480px){
       #flightModal .modal .actions{
         flex-direction:column;
@@ -809,26 +761,33 @@
 <body>
   <div class="page">
 
-    <h1 id="itinerary" style="
-      text-align:center; 
-      color:var(--red); 
-      font-size:clamp(48px,10vw,80px); 
-      margin-bottom:16px;
-      font-weight:800;
-      text-shadow: 
-        0 0 8px rgba(200,16,46,0.5),
-        0 0 16px rgba(200,16,46,0.3),
-        0 0 24px rgba(200,16,46,0.2);
-    ">
-      London 2026
-    </h1>
+    <h1 style="
+  text-align:center; 
+  color:var(--gold); 
+  font-size:clamp(48px,10vw,80px); 
+  margin-bottom:16px;
+  font-weight:800;
+  text-shadow: 
+    0 0 8px rgba(212,175,55,0.7),
+    0 0 16px rgba(212,175,55,0.5),
+    0 0 24px rgba(212,175,55,0.3);
+">
+  London 2026
+</h1>
+
 
     <!-- HERO -->
     <section class="hero" aria-label="London Hero">
       <div class="video-wrap">
-        <img id="londonImage" alt="London City" src="./assets/images/London.png" style="width:100%; height:100%; object-fit:cover; display:block;" />
-      </div>
-    </section>
+  <iframe id="londonVideo"
+    src="https://www.youtube.com/embed/_U1up-tK9w8?autoplay=1&mute=1&controls=0&loop=1&playlist=_U1up-tK9w8&playsinline=1&rel=0&modestbranding=1"
+    allow="autoplay; encrypted-media" frameborder="0" title="London Video"></iframe>
+
+  <!-- Overlay-Bild: erscheint nach 30s / wenn Video pausiert -->
+  <img id="londonImage" alt="London City" src="" aria-hidden="true" />
+</div>
+
+
 
     <!-- CONTENT -->
     <div class="grid">
@@ -849,36 +808,104 @@
         </div>
       </aside>
 
+      <!-- CTA Buttons unter dem Video -->
       <div class="cta-section">
         <div class="cta-row">
           <button class="btn primary" onclick="openModal('flightModal')">✈️ Flugdetails</button>
           <button class="btn secondary" onclick="openModal('stayModal')">🏨 Unterkunft</button>
+          
         </div>
       </div>
+    </section>
+
+      <main class="card" aria-labelledby="itineraryHeading">
+        <h2 id="itineraryHeading">Reiseverlauf</h2>
+        <p class="muted">Mögliches Programm</p>
+        <ol class="itinerary" style="margin-top:12px" id="itinerary">
+          <li><strong>Tag 1:</strong> Ankunft</li>
+          <li><strong>Tag 2:</strong> Tower of London & Afternoon Tea</li>
+          <li><strong>Tag 3:</strong> British Museum & West End Theater</li>
+          <li><strong>Tag 4:</strong> Camden Market & Kulinarische Tour</li>
+          <li><strong>Tag 5:</strong> Buckingham Palace & Abreise</li>
+        </ol>
+      </main>
+
+       
+      <main class="card" aria-labelledby="itineraryHeading">
+  <section id="gallery" style="margin-top:18px">
+    <h3 style="margin:0 0 8px">Galerie</h3>
+    <div class="gallery-container" style="position: relative; width: 800px; margin: 0 auto;">
+      <img id="galleryImage" src="" alt="London Foto" width="800" height="500" style="display:block; width:100%; height:auto;">
+      <button class="nav left" aria-label="Vorheriges Bild"
+              style="position:absolute; top:50%; left:10px; transform:translateY(-50%);
+                     background: rgba(0,0,0,0.4); color:white; border:none; font-size:2rem; cursor:pointer; padding:0 10px; border-radius:5px;">
+        &larr;
+      </button>
+      <button class="nav right" aria-label="Nächstes Bild"
+              style="position:absolute; top:50%; right:10px; transform:translateY(-50%);
+                     background: rgba(0,0,0,0.4); color:white; border:none; font-size:2rem; cursor:pointer; padding:0 10px; border-radius:5px;">
+        &rarr;
+      </button>
     </div>
+  </section>
+</main>
 
-    <main class="card" aria-labelledby="itineraryHeading">
-      <h2 id="itineraryHeading">Reiseverlauf</h2>
-      <p class="muted">Mögliches Programm</p>
-      <ol class="itinerary" style="margin-top:12px">
-        <li><strong>Tag 1:</strong> Ankunft</li>
-        <li><strong>Tag 2:</strong> Tower of London & Afternoon Tea</li>
-        <li><strong>Tag 3:</strong> British Museum & West End Theater</li>
-        <li><strong>Tag 4:</strong> Camden Market & Kulinarische Tour</li>
-        <li><strong>Tag 5:</strong> Buckingham Palace & Abreise</li>
-      </ol>
-    </main>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const galleryPhotos = [
+    'assets/images/Bild5.png',
+    'assets/images/Bild6.png',
+    'assets/images/Bild7.png',
+    'assets/images/Bild8.png',
+    'assets/images/Bild9.png',
+    'assets/images/Bild10.png',
+    'assets/images/Bild11.png',
+    'assets/images/Bild12.png',
+    'assets/images/Bild13.png',
+    'assets/images/Bild14.png',
+    'assets/images/Bild15.png',
+    'assets/images/Bild16.png',
+    'assets/images/Bild17.png',
+    'assets/images/Bild18.png',
+    'assets/images/Bild19.png',
+    'assets/images/Bild20.png'
+  ];
 
-    <main class="card">
-      <section id="gallery" style="margin-top:18px">
-        <h3 style="margin:0 0 8px">Galerie</h3>
-        <div class="gallery-container">
-          <img id="galleryImage" src="" alt="London Foto" style="display:block; width:100%; height:auto;">
-          <button class="nav left" aria-label="Vorheriges Bild">&larr;</button>
-          <button class="nav right" aria-label="Nächstes Bild">&rarr;</button>
-        </div>
-      </section>
-    </main>
+  let currentIndex = 0;
+  const galleryImage = document.getElementById('galleryImage');
+
+  function showImage(index) {
+    galleryImage.src = galleryPhotos[index];
+  }
+
+  showImage(currentIndex);
+
+  document.querySelector('.nav.left').addEventListener('click', (e) => {
+    e.preventDefault();
+    currentIndex = (currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+    showImage(currentIndex);
+  });
+
+  document.querySelector('.nav.right').addEventListener('click', (e) => {
+    e.preventDefault();
+    currentIndex = (currentIndex + 1) % galleryPhotos.length;
+    showImage(currentIndex);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      currentIndex = (currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+      showImage(currentIndex);
+    } else if (e.key === 'ArrowRight') {
+      currentIndex = (currentIndex + 1) % galleryPhotos.length;
+      showImage(currentIndex);
+    }
+  });
+});
+</script>
+
+
+    </div>
 
     <div class="footer">Diese Reise ist exklusiv für Lenke geplant.</div>
 
@@ -889,5 +916,604 @@
     <div class="modal" style="max-width:680px;">
       <button class="close" onclick="closeModal('flightModal')">✕</button>
       
-      <div class="boarding-pass
+      <!-- Boarding Pass Design -->
+      <div class="boarding-pass">
+        <div class="ticket-header">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <div>
+              <h3 style="margin:0; font-size:22px;">Boarding Pass</h3>
+              <p class="muted" style="margin:4px 0 0 0; font-size:13px;">Lufthansa • Direktflug</p>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:11px; color:var(--text-muted); letter-spacing:0.5px;">BUCHUNGSCODE</div>
+              <div style="font-size:16px; font-weight:700; color:var(--gold); letter-spacing:1px;">LG 1225</div>
+            </div>
+          </div>
+        </div>
 
+        <!-- Hinflug -->
+        <div class="flight-segment">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <span style="display:inline-block; padding:4px 10px; background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.3)); border:1px solid var(--gold); border-radius:6px; font-size:11px; font-weight:700; color:var(--gold); letter-spacing:0.5px;">HINFLUG</span>
+            <span style="color:var(--text-muted); font-size:13px;">30. März 2026</span>
+          </div>
+          
+          <div class="flight-route">
+            <div class="airport-info">
+              <div class="airport-code">MUC</div>
+              <div class="airport-name">München</div>
+              <div class="flight-time">17:20</div>
+            </div>
+            
+            <div class="flight-duration">
+              <div class="duration-line">
+                <div class="plane-icon">✈</div>
+              </div>
+              <div class="duration-text">2h 05min</div>
+            </div>
+            
+            <div class="airport-info" style="text-align:right;">
+              <div class="airport-code">LHR</div>
+              <div class="airport-name">London Heathrow</div>
+              <div class="flight-time">18:25</div>
+            </div>
+          </div>
+          
+          <div class="flight-details">
+            <div class="detail-item">
+              <span class="detail-label">Flugnummer</span>
+              <span class="detail-value">LH 2486</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Klasse</span>
+              <span class="detail-value">Economy</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Gate</span>
+              <span class="detail-value">-</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Sitz</span>
+              <span class="detail-value">-</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rückflug -->
+        <div class="flight-segment" style="margin-top:20px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <span style="display:inline-block; padding:4px 10px; background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.3)); border:1px solid var(--gold); border-radius:6px; font-size:11px; font-weight:700; color:var(--gold); letter-spacing:0.5px;">RÜCKFLUG</span>
+            <span style="color:var(--text-muted); font-size:13px;">04. April 2026</span>
+          </div>
+          
+          <div class="flight-route">
+            <div class="airport-info">
+              <div class="airport-code">LHR</div>
+              <div class="airport-name">London Heathrow</div>
+              <div class="flight-time">20:25</div>
+            </div>
+            
+            <div class="flight-duration">
+              <div class="duration-line">
+                <div class="plane-icon">✈</div>
+              </div>
+              <div class="duration-text">1h 55min</div>
+            </div>
+            
+            <div class="airport-info" style="text-align:right;">
+              <div class="airport-code">MUC</div>
+              <div class="airport-name">München</div>
+              <div class="flight-time">23:20</div>
+            </div>
+          </div>
+          
+          <div class="flight-details">
+            <div class="detail-item">
+              <span class="detail-label">Flugnummer</span>
+              <span class="detail-value">LH 2481</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Klasse</span>
+              <span class="detail-value">Economy</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Gate</span>
+              <span class="detail-value">-</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Sitz</span>
+              <span class="detail-value">-</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Passagier Info -->
+        <div style="margin-top:20px; padding-top:16px; border-top:1px dashed rgba(212,175,55,0.25);">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+            <div>
+              <div class="detail-label">Passagier</div>
+              <div class="detail-value">Lenke Gacs</div>
+            </div>
+            <div>
+              <div class="detail-label">Gepäck</div>
+              <div class="detail-value">1x Rucksack,<br />
+                1x Handgepäck</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barcode -->
+        <div style="margin-top:20px; text-align:center; padding:16px; background:rgba(0,0,0,0.3); border-radius:8px; border:1px solid rgba(212,175,55,0.15);">
+          <svg width="100%" height="60" viewBox="0 0 300 60" style="max-width:300px; margin:0 auto;">
+            <g fill="var(--gold)">
+              <rect x="5" y="5" width="3" height="50"/>
+              <rect x="12" y="5" width="2" height="50"/>
+              <rect x="18" y="5" width="4" height="50"/>
+              <rect x="26" y="5" width="2" height="50"/>
+              <rect x="32" y="5" width="3" height="50"/>
+              <rect x="39" y="5" width="2" height="50"/>
+              <rect x="45" y="5" width="5" height="50"/>
+              <rect x="54" y="5" width="2" height="50"/>
+              <rect x="60" y="5" width="3" height="50"/>
+              <rect x="67" y="5" width="4" height="50"/>
+              <rect x="75" y="5" width="2" height="50"/>
+              <rect x="81" y="5" width="3" height="50"/>
+              <rect x="88" y="5" width="2" height="50"/>
+              <rect x="94" y="5" width="4" height="50"/>
+              <rect x="102" y="5" width="3" height="50"/>
+              <rect x="109" y="5" width="2" height="50"/>
+              <rect x="115" y="5" width="5" height="50"/>
+              <rect x="124" y="5" width="2" height="50"/>
+              <rect x="130" y="5" width="3" height="50"/>
+              <rect x="137" y="5" width="2" height="50"/>
+              <rect x="143" y="5" width="4" height="50"/>
+              <rect x="151" y="5" width="3" height="50"/>
+              <rect x="158" y="5" width="2" height="50"/>
+              <rect x="164" y="5" width="5" height="50"/>
+              <rect x="173" y="5" width="2" height="50"/>
+              <rect x="179" y="5" width="3" height="50"/>
+              <rect x="186" y="5" width="4" height="50"/>
+              <rect x="194" y="5" width="2" height="50"/>
+              <rect x="200" y="5" width="3" height="50"/>
+              <rect x="207" y="5" width="2" height="50"/>
+              <rect x="213" y="5" width="4" height="50"/>
+              <rect x="221" y="5" width="3" height="50"/>
+              <rect x="228" y="5" width="2" height="50"/>
+              <rect x="234" y="5" width="5" height="50"/>
+              <rect x="243" y="5" width="2" height="50"/>
+              <rect x="249" y="5" width="3" height="50"/>
+              <rect x="256" y="5" width="2" height="50"/>
+              <rect x="262" y="5" width="4" height="50"/>
+              <rect x="270" y="5" width="3" height="50"/>
+              <rect x="277" y="5" width="2" height="50"/>
+              <rect x="283" y="5" width="5" height="50"/>
+              <rect x="292" y="5" width="3" height="50"/>
+            </g>
+          </svg>
+          <div style="margin-top:8px; font-size:11px; color:var(--text-muted); letter-spacing:1px;">LG1225-2026-MUC-LHR</div>
+        </div>
+
+        <div style="margin-top:16px; padding:12px; background:rgba(212,175,55,0.05); border-radius:8px; border:1px solid rgba(212,175,55,0.15);">
+          <p style="margin:0; font-size:12px; color:var(--text-muted); line-height:1.5;">
+            ⚠️ Bitte erscheinen Sie mindestens 2 Stunden vor Abflug am Flughafen. Boarding endet 30 Minuten vor Abflug.
+          </p>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:20px;">
+        <a class="btn primary" href="https://www.lufthansa.com/de/de/homepage" target="_blank">Flüge prüfen</a>
+        <button class="btn ghost" onclick="closeModal('flightModal')">Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- stay modal (ANPASSUNG: Galerie klickbar + Buttons am Ende) -->
+  <div id="stayModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal" style="max-width:720px;">
+    <button class="close" onclick="closeModal('stayModal')">✕</button>
+    
+    <!-- AirBnB-Style Unterkunft -->
+    <div class="airbnb-listing">
+      <!-- Unterkunfts-Galerie -->
+      <div class="property-gallery" aria-label="Unterkunfts-Galerie">
+        <div
+          class="main-image"
+          id="mainImage"
+          role="button"
+          tabindex="0"
+          aria-label="Hauptbild - klicken zum Vergrößern"
+          style="background-image:url('./assets/images/Bild1.png');"
+          data-src="./assets/images/Bild1.png">
+        </div>
+        <div class="thumbnail-grid" role="list">
+          <div class="thumb-image active" role="button" tabindex="0" aria-label="Bild 1" data-src="./assets/images/Bild1.png" style="background-image:url('./assets/images/Bild1.png');"></div>
+          <div class="thumb-image" role="button" tabindex="0" aria-label="Bild 2" data-src="./assets/images/Bild2.png" style="background-image:url('./assets/images/Bild2.png');"></div>
+          <div class="thumb-image" role="button" tabindex="0" aria-label="Bild 3" data-src="./assets/images/Bild3.png" style="background-image:url('./assets/images/Bild3.png');"></div>
+          <div class="thumb-image" role="button" tabindex="0" aria-label="Bild 4" data-src="./assets/images/Bild4.png" style="background-image:url('./assets/images/Bild4.png');"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unterkunfts-Info -->
+    <div style="padding:20px 0;">
+      <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:12px; flex-wrap:wrap; gap:12px;">
+        <div>
+          <h3 style="margin:0 0 4px; font-size:22px;">Gemütliches Studio in der Nähe des Londoner Zentrums</h3>
+          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <!-- Bewertung -->
+            <div style="display:flex; align-items:center; gap:4px; font-size:14px;">
+              <div style="position: relative; display: inline-block; line-height:1;">
+                <!-- Gefüllte Sterne -->
+                <div style="position:absolute; top:0; left:0; overflow:hidden; white-space: nowrap; width:87.6%; color:var(--gold);">
+                  ★★★★★
+                </div>
+                <!-- Hintergrund-Sterne -->
+                <div style="color:var(--text-muted);">★★★★★</div>
+              </div>
+              <!-- Numerische Bewertung -->
+              <span style="font-size:14px; color:var(--text-gold); font-weight:600;">4,38</span>
+              <span style="font-size:14px; color:var(--text-muted);">(85 Bewertungen)</span>
+            </div>
+
+            <span style="font-size:14px; color:var(--text-muted);">•</span>
+            <span style="font-size:14px; color:var(--text-gold);">Whitechapel, London</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+      <!-- Unterkunfts-Details -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px; margin-bottom:16px;">
+        <div class="property-feature">
+          <span class="feature-icon">👥</span>
+          <div>
+            <div class="feature-label">Gäste</div>
+            <div class="feature-value">3 Gäste</div>
+          </div>
+        </div>
+        <div class="property-feature">
+          <span class="feature-icon">🛏️</span>
+          <div>
+            <div class="feature-label">Schlafzimmer</div>
+            <div class="feature-value">1 Doppelbett, <br />1 Schlafcouch</div>
+          </div>
+        </div>
+        <div class="property-feature">
+          <span class="feature-icon">🛁</span>
+          <div>
+            <div class="feature-label">Badezimmer</div>
+            <div class="feature-value">1 Bad</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+      <!-- Beschreibung -->
+      <div style="margin-bottom:16px;">
+        <p style="margin:0; color:var(--text-gold); font-size:14px; line-height:1.6;">
+          Gemütliches Studio in der Nähe des Londoner Zentrums. Perfekte Lage zum Erkunden der Stadt.
+        </p>
+      </div>
+
+      <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+      <!-- Ausstattung -->
+      <div style="margin-bottom:16px;">
+        <h4 style="margin:0 0 12px; font-size:16px; color:var(--gold);">Ausstattung</h4>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:8px;">
+          <div class="amenity-item">
+            <span style="margin-right:8px;">📶</span>
+            <span>WLAN</span>
+          </div>
+          <div class="amenity-item">
+            <span style="margin-right:8px;">🥘</span>
+            <span>Küche</span>
+          </div>
+          <div class="amenity-item">
+            <span style="margin-right:8px;">📺</span>
+            <span>TV</span>
+          </div>
+          <div class="amenity-item">
+            <span style="margin-right:8px;">🧺</span>
+            <span>Waschmaschine</span>
+          </div>
+          <div class="amenity-item">
+            <span style="margin-right:8px;">☕</span>
+            <span>Kaffeemaschine</span>
+          </div>
+          <div class="amenity-item">
+            <span style="margin-right:8px;">🔐</span>
+            <span>Schlüsselbox</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+      <!-- Karte -->
+      <div style="margin-bottom:16px;">
+        <h4 style="margin:0 0 12px; font-size:16px; color:var(--gold);">Lage</h4>
+        <div class="location-map">
+          <iframe
+            src="https://www.google.com/maps?q=51.519639,-0.052745&hl=de&z=15&output=embed"
+            width="100%"
+            height="300"
+            style="border:0; border-radius:12px; filter:grayscale(20%) contrast(1.1) brightness(0.85);"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <div style="margin-top:12px; padding:12px; background:rgba(212,175,55,0.05); border-radius:8px; border:1px solid rgba(212,175,55,0.15);">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+            <span style="color:var(--gold);">📍</span>
+            <span style="font-size:14px; font-weight:600; color:var(--text-gold);">Whitechapel, London E1 3BY</span>
+          </div>
+          <p style="margin:0; font-size:13px; color:var(--text-muted); line-height:1.5;">
+            7 Min. zu Fuß zur U-Bahn • 30 Min. zum Big Ben • 20 Min. zum Tower of London
+          </p>
+        </div>
+      </div>
+
+      <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+      <!-- Check-in Details -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div>
+          <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Check-in</div>
+          <div style="font-size:14px; color:var(--text-gold); font-weight:600;">15:00 - 23:59</div>
+        </div>
+        <div>
+          <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Check-out</div>
+          <div style="font-size:14px; color:var(--text-gold); font-weight:600;">bis 11:00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIONS (bleiben unter der gesamten Unterkunft, nicht seitlich) -->
+    <div class="actions" style="margin-top:20px; display:flex; flex-direction:column; gap:10px;">
+      <a class="btn primary" href="https://www.airbnb.de/rooms/1064565488639091536" target="_blank">Auf AirBnB ansehen</a>
+      <button class="btn ghost" onclick="closeModal('stayModal')">Schließen</button>
+    </div>
+
+  </div>
+</div>
+
+  <div id="packing" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <button class="close" onclick="closeModal('packing')">✕</button>
+      <h3>Reisecheckliste</h3>
+      <ul style="margin-top:8px">
+        <li>Reisepass + Personalausweis</li>
+        <li>UK-Stecker Adapter</li>
+        <li>Electronic Travel Authorisation (ETA)</li>
+        <li>Krankenversicherungsnachweis</li>
+      </ul>
+      <div class="actions">
+        <button class="btn primary" onclick="closeModal('packing')">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="customModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <button class="close" onclick="closeModal('customModal')">✕</button>
+      <h3>Optionen anpassen</h3>
+      <p class="muted">Spezifische Wünsche (z. B. Theaterkarten, Barrierefreiheit, spezielle Restaurants)</p>
+      <textarea id="customText" placeholder="Ihre Wünsche hier eingeben..."></textarea>
+      <div class="actions">
+        <button class="btn primary" onclick="saveCustom()">Speichern</button>
+        <button class="btn ghost" onclick="closeModal('customModal')">Abbrechen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox markup (für Vergrößerung) -->
+  <div id="lightboxBackdrop" class="lightbox-backdrop" aria-hidden="true" role="dialog" aria-label="Bildvergrößerung">
+    <div class="lightbox" role="document">
+      <button class="close" id="lightboxClose" aria-label="Schließen">✕</button>
+      <button class="nav prev" id="lightboxPrev" aria-label="Vorheriges Bild">‹</button>
+      <img id="lightboxImg" src="./assets/images/Bild1.png" alt="Großes Bild" />
+      <button class="nav next" id="lightboxNext" aria-label="Nächstes Bild">›</button>
+    </div>
+  </div>
+
+  <script>
+  var player;
+  var videoEnded = false;
+
+  // YouTube API laden
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // YouTube Player initialisieren
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('londonVideo', {
+      events: {
+        'onStateChange': onPlayerStateChange
+      }
+    });
+
+    // Timer: Video nach 30 Sekunden stoppen
+    setTimeout(function() {
+      if (!videoEnded && player && typeof player.pauseVideo === 'function') {
+        player.pauseVideo();
+        showImage();
+      }
+    }, 30000);
+  }
+
+  function onPlayerStateChange(event) {
+    if ((event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) && !videoEnded) {
+      showImage();
+    }
+  }
+
+  function showImage() {
+  // guard: nur einmal ausführen
+  if (videoEnded) return;
+  videoEnded = true;
+
+  var video = document.getElementById('londonVideo');
+  var image = document.getElementById('londonImage');
+
+  if (!image) return;
+
+  // Setze das Bild (lokaler Pfad)
+  image.src = './assets/images/London-City.jpg';
+
+  // aria-hidden false wenn du willst, ansonsten hidden (opt.)
+  image.setAttribute('aria-hidden', 'false');
+
+  // Force reflow falls notwendig bevor Transition
+  void image.offsetWidth;
+
+  // sanft einblenden und small scale->normal
+  image.style.opacity = '1';
+  image.style.transform = 'scale(1)';
+
+  // optional: Video pausieren (falls noch läuft)
+  try {
+    if (player && typeof player.pauseVideo === 'function') {
+      player.pauseVideo();
+    } else if (video && !video.paused) {
+      video.pause && video.pause();
+    }
+  } catch (e) {
+    console.warn('Pause failed', e);
+  }
+}
+
+
+function openModal(id){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = 'flex';
+  el.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = 'none';
+  el.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+
+function saveCustom(){
+  var txt = document.getElementById('customText').value;
+  alert('Danke — deine Notiz wurde (temporär) gespeichert: "'+ (txt||'[leer]') +'"');
+  closeModal('customModal');
+}
+
+// ESC-Taste zum Schließen aller Modals
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    ['flightModal','stayModal','packing','customModal'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.style.display === 'flex') closeModal(id);
+    })
+  }
+});
+
+/* -------------------------
+   Gallery & Lightbox Logic
+   ------------------------- */
+(function(){
+  const main = document.getElementById('mainImage');
+  if(!main) return; // only run if gallery exists in DOM
+
+  const thumbs = Array.from(document.querySelectorAll('.thumb-image'));
+  const backdrop = document.getElementById('lightboxBackdrop');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbClose = document.getElementById('lightboxClose');
+  const lbPrev = document.getElementById('lightboxPrev');
+  const lbNext = document.getElementById('lightboxNext');
+
+  // helper: set active thumb + update main bg
+  function setImage(src){
+    main.style.backgroundImage = `url('${src}')`;
+    main.dataset.src = src;
+    thumbs.forEach(t => {
+      if(t.dataset.src === src) t.classList.add('active'); else t.classList.remove('active');
+    });
+  }
+
+  // click / keyboard handlers for thumbnails
+  thumbs.forEach((t, idx) => {
+    function activate(){ setImage(t.dataset.src); }
+    t.addEventListener('click', activate);
+    t.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); openLightbox(); }
+    });
+    // double-click opens lightbox
+    t.addEventListener('dblclick', () => { setImage(t.dataset.src); openLightbox(); });
+  });
+
+  // main image opens lightbox
+  function openLightbox(){
+    const src = main.dataset.src || main.style.backgroundImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+    lbImg.src = src;
+    backdrop.style.display = 'flex';
+    backdrop.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+    currentIndex = thumbs.findIndex(t => t.dataset.src === src);
+    if(currentIndex < 0) currentIndex = 0;
+  }
+
+  main.addEventListener('click', openLightbox);
+  main.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(); } });
+
+  // lightbox close
+  function closeLightbox(){
+    backdrop.style.display = 'none';
+    backdrop.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  lbClose.addEventListener('click', closeLightbox);
+  backdrop.addEventListener('click', function(e){
+    if(e.target === backdrop) closeLightbox();
+  });
+
+  // next / prev
+  let currentIndex = 0;
+  function showPrev(){
+    currentIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+    lbImg.src = thumbs[currentIndex].dataset.src;
+  }
+  function showNext(){
+    currentIndex = (currentIndex + 1) % thumbs.length;
+    lbImg.src = thumbs[currentIndex].dataset.src;
+  }
+  lbPrev.addEventListener('click', showPrev);
+  lbNext.addEventListener('click', showNext);
+
+  // keyboard navigation for lightbox
+  document.addEventListener('keydown', function(e){
+    if(backdrop.style.display === 'flex'){
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowLeft') showPrev();
+      if(e.key === 'ArrowRight') showNext();
+    }
+  });
+
+  // Initialize dataset on load
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!main.dataset.src) {
+      const first = thumbs[0];
+      if(first) { setImage(first.dataset.src); }
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
