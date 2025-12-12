@@ -7,27 +7,26 @@
   <style>
     /* Elegant black & gold palette */
     :root{
-      --gold:#C8102E;
-      --gold-light:#E03E52;
-      --gold-dark:#9B0D24;
-      --black:#ffffff;
-      --black-light:#f8f9fa;
-      --grey:#e9ecef;
-      --grey-light:#dee2e6;
-      --text-gold:#012169;
-      --text-white:#212529;
-      --text-muted:#6c757d;
-      --bg:#ffffff;
-      --card:#f8f9fa;
-      --shadow: 0 12px 40px rgba(1,33,105,0.15);
-      --shadow-sm: 0 4px 16px rgba(1,33,105,0.1);
-      --shadow-gold: 0 8px 32px rgba(200,16,46,0.25);
+      --gold:#d4af37;
+      --gold-light:#e8c567;
+      --gold-dark:#b8941f;
+      --black:#0a0a0a;
+      --black-light:#1a1a1a;
+      --grey:#2a2a2a;
+      --grey-light:#3a3a3a;
+      --text-gold:#f5e6c8;
+      --text-white:#ffffff;
+      --text-muted:#a0a0a0;
+      --bg:#0f0f0f;
+      --card:#1a1a1a;
+      --shadow: 0 12px 40px rgba(0,0,0,0.5);
+      --shadow-sm: 0 4px 16px rgba(0,0,0,0.3);
+      --shadow-gold: 0 8px 32px rgba(212,175,55,0.25);
       --radius:16px;
       --radius-sm:12px;
       --max-width:920px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
-
 
     html,body{
       height:100%; 
@@ -134,7 +133,7 @@
   height:100%;
   object-fit:cover;
   border:0;
-  opacity:1;
+  opacity:0;
   transition:opacity 600ms ease, transform 600ms ease;
   transform:scale(1.02);
   z-index:5; /* iframe default 0; .overlay bleibt über dem Bild (falls .overlay z-index höher ist) */
@@ -761,7 +760,7 @@
 <body>
   <div class="page">
 
-    <h1 style="
+    <h1 id="itinerary" style="
   text-align:center; 
   color:var(--gold); 
   font-size:clamp(48px,10vw,80px); 
@@ -779,9 +778,9 @@
     <!-- HERO -->
     <section class="hero" aria-label="London Hero">
       <div class="video-wrap">
-        <img id="londonImage" alt="London City" src="./assets/images/London.png" style="width:100%; height:100%; object-fit:cover; display:block;" />
-      </div>
-    </section>
+  <!-- Nur Bild, kein Video -->
+  <img id="londonImage" alt="London City" src="./assets/images/London-City.jpg" style="width:100%; height:100%; object-fit:cover; display:block;" />
+</div>
 
 
 
@@ -817,7 +816,7 @@
       <main class="card" aria-labelledby="itineraryHeading">
         <h2 id="itineraryHeading">Reiseverlauf</h2>
         <p class="muted">Mögliches Programm</p>
-        <ol class="itinerary" style="margin-top:12px" id="itinerary">
+        <ol class="itinerary" style="margin-top:12px">
           <li><strong>Tag 1:</strong> Ankunft</li>
           <li><strong>Tag 2:</strong> Tower of London & Afternoon Tea</li>
           <li><strong>Tag 3:</strong> British Museum & West End Theater</li>
@@ -1513,4 +1512,24 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
