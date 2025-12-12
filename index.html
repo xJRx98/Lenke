@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>Lenke</title>
-  <style>
+ <style>
     /* Elegant black & gold palette */
     :root{
   --lufthansa-blue: #0c2340;       
@@ -564,34 +564,54 @@
 
     /* Boarding Pass Styles */
 .boarding-pass {
-  background: var(--lufthansa-yellow);
-  border-radius: 16px;
-  padding: 24px;
-  max-width: 480px;
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 12px;
+  padding: 0;
+  max-width: 600px;
   font-family: 'Segoe UI', Roboto, sans-serif;
-  color: var(--grey);
+  color: var(--lufthansa-blue);
   position: relative;
-  box-shadow: 0 8px 24px rgba(0, 36, 64, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+/* Lufthansa header stripe */
+.boarding-pass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(to right, var(--lufthansa-blue) 0%, var(--lufthansa-yellow) 100%);
 }
 
 /* Perforated edge effect */
 .boarding-pass::after {
   content: '';
   position: absolute;
-  bottom: -12px;
-  left: 20px;
-  width: calc(100% - 40px);
-  height: 12px;
-  border-bottom: 2px dashed var(--lufthansa-blue);
+  left: 0;
+  right: 0;
+  bottom: 140px;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    #d0d0d0 0px,
+    #d0d0d0 8px,
+    transparent 8px,
+    transparent 16px
+  );
 }
 
 /* Flight Segment */
 .flight-segment {
-  background: rgba(12, 35, 64, 0.05); /* leichtes Blau für Segment */
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 16px;
-  border: 1px solid rgba(12, 35, 64, 0.15);
+  background: #ffffff;
+  border-radius: 0;
+  padding: 24px;
+  margin-bottom: 0;
+  border: none;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 /* Flight Route */
@@ -608,30 +628,33 @@
 .airport-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .airport-code {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 36px;
+  font-weight: 800;
   color: var(--lufthansa-blue);
-  letter-spacing: -0.5px;
+  letter-spacing: 1px;
   line-height: 1;
+  font-family: 'Arial Black', sans-serif;
 }
 
 .airport-name {
-  font-size: 12px;
-  color: var(--text-mutedb);
+  font-size: 11px;
+  color: #666666;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-weight: 500;
 }
 
 /* Flight Time */
 .flight-time {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 700;
   color: var(--lufthansa-blue);
-  margin-top: 4px;
+  margin-top: 8px;
+  letter-spacing: -0.5px;
 }
 
 /* Flight Duration */
@@ -663,28 +686,30 @@
 .flight-details {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  padding-top: 16px;
-  border-top: 1px dashed var(--lufthansa-blue);
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid #e8e8e8;
 }
 
 .detail-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .detail-label {
-  font-size: 10px;
-  color: var(--text-muted);
+  font-size: 9px;
+  color: #888888;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  font-weight: 600;
 }
 
 .detail-value {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   color: var(--lufthansa-blue);
+  letter-spacing: 0.3px;
 }
 
 /* Optional: Boarding Pass Barcode */
@@ -1612,6 +1637,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
