@@ -585,7 +585,7 @@
 .boarding-pass {
   background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
   border-radius: 12px;
-  padding: 0 16px;
+  padding: 0 8px;
   max-width: 600px;
   font-family: 'Segoe UI', Roboto, sans-serif;
   color: var(--lufthansa-blue);
@@ -608,19 +608,7 @@
 
 /* Perforated edge effect */
 .boarding-pass::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 140px;
-  height: 1px;
-  background: repeating-linear-gradient(
-    90deg,
-    #d0d0d0 0px,
-    #d0d0d0 8px,
-    transparent 8px,
-    transparent 16px
-  );
+  content: none;
 }
 
 /* Flight Segment */
@@ -1692,6 +1680,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
