@@ -556,115 +556,154 @@
     }
 
     /* Boarding Pass Styles */
-    .boarding-pass{
-      background:linear-gradient(135deg, rgba(253,253,253,0.6), rgba(242,242,242,0.6));
-      border:1px solid rgba(24,116,205,0.25);
-      border-radius:12px;
-      padding:20px;
-    }
-    
-    .flight-segment{
-      background:rgba(253,253,253,0.2);
-      border-radius:10px;
-      padding:16px;
-      border:1px solid rgba(24,116,205,0.1);
-    }
-    
-    .flight-route{
-      display:grid;
-      grid-template-columns:1fr auto 1fr;
-      gap:16px;
-      align-items:center;
-      margin-bottom:16px;
-    }
-    
-    .airport-info{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
-    
-    .airport-code{
-      font-size:28px;
-      font-weight:700;
-      color:var(--gold);
-      letter-spacing:-0.5px;
-      line-height:1;
-    }
-    
-    .airport-name{
-      font-size:12px;
-      color:var(--text-muted);
-      text-transform:uppercase;
-      letter-spacing:0.5px;
-    }
-    
-    .flight-time{
-      font-size:18px;
-      font-weight:600;
-      color:var(--text-gold);
-      margin-top:4px;
-    }
-    
-    .flight-duration{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:8px;
-      min-width:80px;
-    }
-    
-    .duration-line{
-      position:relative;
-      width:100%;
-      height:2px;
-      background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-      border-radius:2px;
-    }
-    
-    .plane-icon{
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      font-size:16px;
-      background:var(--card);
-      padding:2px 4px;
-      border-radius:4px;
-    }
-    
-    .duration-text{
-      font-size:11px;
-      color:var(--text-muted);
-      white-space:nowrap;
-    }
-    
-    .flight-details{
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      gap:12px;
-      padding-top:12px;
-      border-top:1px dashed rgba(24,116,205,0.2);
-    }
-    
-    .detail-item{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
-    
-    .detail-label{
-      font-size:10px;
-      color:var(--text-muted);
-      text-transform:uppercase;
-      letter-spacing:0.5px;
-    }
-    
-    .detail-value{
-      font-size:14px;
-      font-weight:600;
-      color:var(--text-gold);
-    }
+.boarding-pass {
+  background: linear-gradient(135deg, var(--black-light) 0%, var(--bg) 100%);
+  border: 1px solid rgba(0, 36, 125, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 480px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 8px 24px rgba(0, 36, 125, 0.2);
+  position: relative;
+}
+
+/* Perforated edge effect */
+.boarding-pass::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 12px;
+  border-bottom: 2px dashed rgba(0, 36, 125, 0.2);
+}
+
+/* Flight Segment */
+.flight-segment {
+  background: rgba(0, 36, 125, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(0, 36, 125, 0.15);
+  margin-bottom: 16px;
+}
+
+/* Flight Route */
+.flight-route {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* Airport Info */
+.airport-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.airport-code {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.airport-name {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Flight Time */
+.flight-time {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--grey);
+  margin-top: 4px;
+}
+
+/* Flight Duration */
+.flight-duration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 80px;
+}
+
+.duration-line {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  border-radius: 2px;
+}
+
+.plane-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: var(--grey);
+  background: var(--bg);
+  padding: 4px 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 36, 125, 0.2);
+}
+
+.duration-text {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Flight Details */
+.flight-details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(0, 36, 125, 0.25);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--grey);
+}
+
+/* Optional: Boarding Pass Barcode */
+.boarding-pass .barcode {
+  margin-top: 16px;
+  height: 40px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--grey),
+    var(--grey) 2px,
+    var(--bg) 2px,
+    var(--bg) 4px
+  );
+  border-radius: 4px;
+}
+
     
     @media(max-width:480px){
       .flight-route{
@@ -1512,6 +1551,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
