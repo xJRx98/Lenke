@@ -745,14 +745,33 @@
   border-radius: 4px;
 }
 
-   .property-feature {
+ .property-feature {
+  display: flex;
+  flex-direction: column;   /* Inhalte untereinander */
+  gap: 4px;
+}
+
+.property-feature-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 10px;                /* Abstand Icon ↔ Label */
 }
-.property-feature .feature-icon {
+
+.feature-icon {
   font-size: 20px;
   line-height: 1;
+}
+
+.feature-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lufthansa-blue);
+}
+
+.feature-value {
+  font-size: 13px;
+  color: var(--text-mutedb);
+  margin-left: 30px;        /* optional: Einzug für schöne Ausrichtung */
 }
 
 
@@ -1315,30 +1334,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <!-- Unterkunfts-Details -->
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px; margin-bottom:16px;">
+
   <div class="property-feature">
-    <span class="feature-icon">👥</span>
-    <div>
+    <div class="property-feature-header">
+      <span class="feature-icon">👥</span>
       <div class="feature-label">Gäste</div>
-      <div class="feature-value">3 Gäste</div>
     </div>
+    <div class="feature-value">3 Gäste</div>
   </div>
 
   <div class="property-feature">
-    <span class="feature-icon">🛏️</span>
-    <div>
+    <div class="property-feature-header">
+      <span class="feature-icon">🛏️</span>
       <div class="feature-label">Schlafzimmer</div>
-      <div class="feature-value">1 Doppelbett, <br />1 Schlafcouch</div>
     </div>
+    <div class="feature-value">1 Doppelbett, <br />1 Schlafcouch</div>
   </div>
 
   <div class="property-feature">
-    <span class="feature-icon">🛁</span>
-    <div>
+    <div class="property-feature-header">
+      <span class="feature-icon">🛁</span>
       <div class="feature-label">Badezimmer</div>
-      <div class="feature-value">1 Bad</div>
     </div>
+    <div class="feature-value">1 Bad</div>
   </div>
+
 </div>
+
 
       <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
 
@@ -1670,6 +1692,7 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
 
 
