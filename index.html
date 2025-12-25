@@ -1444,22 +1444,32 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
-  <!-- PACKING MODAL (mit korrigierter ID) -->
-  <div id="packingModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal">
-      <button class="close" onclick="closeModal('packinModal')">✕</button>
-      <h3>Reisecheckliste</h3>
-      <ul style="margin-top:8px">
-        <li>Reisepass + Personalausweis</li>
-        <li>UK-Stecker Adapter</li>
-        <li>Electronic Travel Authorisation (ETA)</li>
-        <li>Krankenversicherungsnachweis</li>
-      </ul>
-      <div class="actions">
-        <button class="btn primary" onclick="closeModal('packingModal')">OK</button>
-      </div>
+ <!-- PACKING MODAL (neu gestaltet wie stayModal) -->
+<div id="packingModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal" style="max-width:720px;">
+    <button class="close" onclick="closeModal('packingModal')">✕</button>
+
+    <h3 style="margin:0 0 16px; font-size:22px;">Reisecheckliste</h3>
+
+    <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+    <ul style="margin-top:8px; font-size:14px; line-height:1.6; color:#000000;">
+      <li>Reisepass + Personalausweis</li>
+      <li>UK-Stecker Adapter</li>
+      <li>Electronic Travel Authorisation (ETA)</li>
+      <li>Krankenversicherungsnachweis</li>
+    </ul>
+
+    <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
+
+    <div class="actions" style="margin-top:20px; display:flex; flex-direction:column; gap:10px;">
+      <button class="btn primary" onclick="closeModal('packingModal')">OK</button>
+      <button class="btn ghost" onclick="closeModal('packingModal')">Schließen</button>
     </div>
+
   </div>
+</div>
+
 
   <div id="customModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal">
@@ -1689,4 +1699,5 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
 
