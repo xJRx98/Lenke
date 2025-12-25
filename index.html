@@ -896,7 +896,7 @@
         </ul>
 
         <div style="margin-top:16px; display:flex; gap:8px; flex-wrap:wrap">
-          <button class="btn secondary" onclick="openModal('packing')" style="flex:1; min-width:120px">📋 Reisecheckliste</button>
+          <button class="btn secondary" onclick="openPackingModal()" style="flex:1; min-width:120px">📋 Reisecheckliste</button>
           <a class="btn ghost" href="https://www.visitlondon.com" target="_blank" style="flex:1; min-width:120px">🔍 Mehr</a>
         </div>
       </aside>
@@ -1444,9 +1444,10 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
-  <div id="packing" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+  <!-- PACKING MODAL (mit korrigierter ID) -->
+  <div id="packingModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal">
-      <button class="close" onclick="closeModal('packing')">✕</button>
+      <button class="close" onclick="closePackingModal()">✕</button>
       <h3>Reisecheckliste</h3>
       <ul style="margin-top:8px">
         <li>Reisepass + Personalausweis</li>
@@ -1455,7 +1456,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <li>Krankenversicherungsnachweis</li>
       </ul>
       <div class="actions">
-        <button class="btn primary" onclick="closeModal('packing')">OK</button>
+        <button class="btn primary" onclick="closePackingModal()">OK</button>
       </div>
     </div>
   </div>
@@ -1568,6 +1569,15 @@ function closeModal(id){
   document.body.style.overflow = '';
 }
 
+// Spezielle Funktionen für das Packlisten-Modal
+function openPackingModal(){
+  openModal('packingModal');
+}
+
+function closePackingModal(){
+  closeModal('packingModal');
+}
+
 function saveCustom(){
   var txt = document.getElementById('customText').value;
   alert('Danke — deine Notiz wurde (temporär) gespeichert: "'+ (txt||'[leer]') +'"');
@@ -1577,7 +1587,7 @@ function saveCustom(){
 // ESC-Taste zum Schließen aller Modals
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape'){
-    ['flightModal','stayModal','packing','customModal'].forEach(function(id){
+    ['flightModal','stayModal','packingModal','customModal'].forEach(function(id){
       var el = document.getElementById(id);
       if(el && el.style.display === 'flex') closeModal(id);
     })
@@ -1679,46 +1689,3 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
