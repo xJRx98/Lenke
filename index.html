@@ -880,7 +880,15 @@
   <img id="londonImage" alt="London City" src="./assets/images/London.png" style="width:100%; height:100%; object-fit:cover; display:block;" />
 </div>
 
-
+      <!-- CTA Buttons unter dem Video -->
+      <div class="cta-section">
+        <div class="cta-row">
+          <button class="btn primary" onclick="openModal('flightModal')">✈️ Flugdetails</button>
+          <button class="btn secondary" onclick="openModal('stayModal')">🏨 Unterkunft</button>
+          
+        </div>
+      </div>
+    </section>
 
     <!-- CONTENT -->
     <div class="grid">
@@ -901,20 +909,10 @@
         </div>
       </aside>
 
-      <!-- CTA Buttons unter dem Video -->
-      <div class="cta-section">
-        <div class="cta-row">
-          <button class="btn primary" onclick="openModal('flightModal')">✈️ Flugdetails</button>
-          <button class="btn secondary" onclick="openModal('stayModal')">🏨 Unterkunft</button>
-          
-        </div>
-      </div>
-    </section>
-
       <main class="card" aria-labelledby="itineraryHeading">
         <h2 id="itineraryHeading">Reiseverlauf</h2>
         <p class="muted">Mögliches Programm</p>
-        <ul class="itinerary" style="margin-top:12px">
+        <ul class="itinerary" style="margin-top:12px; list-style:none;">
           <li><strong>Tag 1:</strong> Ankunft</li>
           <li><strong>Tag 2:</strong> Tower of London & Afternoon Tea</li>
           <li><strong>Tag 3:</strong> British Museum & West End Theater</li>
@@ -1444,32 +1442,22 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
- <!-- PACKING MODAL (neu gestaltet wie stayModal) -->
-<div id="packingModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-  <div class="modal" style="max-width:720px;">
-    <button class="close" onclick="closeModal('packingModal')">✕</button>
-
-    <h3 style="margin:0 0 16px; font-size:22px;">Reisecheckliste</h3>
-
-    <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
-
-    <ul style="margin-top:8px; font-size:14px; line-height:1.6; color:#000000;">
-      <li>Reisepass + Personalausweis</li>
-      <li>UK-Stecker Adapter</li>
-      <li>Electronic Travel Authorisation (ETA)</li>
-      <li>Krankenversicherungsnachweis</li>
-    </ul>
-
-    <div style="height:1px; background:rgba(212,175,55,0.15); margin:16px 0;"></div>
-
-    <div class="actions" style="margin-top:20px; display:flex; flex-direction:column; gap:10px;">
-      <button class="btn primary" onclick="closeModal('packingModal')">OK</button>
-      <button class="btn ghost" onclick="closeModal('packingModal')">Schließen</button>
+  <!-- PACKING MODAL -->
+  <div id="packingModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <button class="close" onclick="closeModal('packingModal')">✕</button>
+      <h3>Reisecheckliste</h3>
+      <ul style="margin-top:8px">
+        <li>Reisepass + Personalausweis</li>
+        <li>UK-Stecker Adapter</li>
+        <li>Electronic Travel Authorisation (ETA)</li>
+        <li>Krankenversicherungsnachweis</li>
+      </ul>
+      <div class="actions">
+        <button class="btn primary" onclick="closeModal('packingModal')">OK</button>
+      </div>
     </div>
-
   </div>
-</div>
-
 
   <div id="customModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal">
@@ -1564,9 +1552,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function openModal(id){
+  // Close all other modals first
+  ['flightModal','stayModal','packingModal','customModal','testModal'].forEach(function(modalId){
+    if(modalId !== id) {
+      var otherModal = document.getElementById(modalId);
+      if(otherModal) {
+        otherModal.style.display = 'none';
+        otherModal.setAttribute('aria-hidden','true');
+      }
+    }
+  });
+  
   var el = document.getElementById(id);
   if(!el) return;
-  el.style.display = 'flex';
+  
+  // Move to body if not already there (FIX for modal not showing)
+  if(el.parentElement !== document.body) {
+    document.body.appendChild(el);
+  }
+  
+  // Force display and positioning
+  el.style.setProperty('display', 'flex', 'important');
+  el.style.setProperty('position', 'fixed', 'important');
+  el.style.setProperty('top', '0', 'important');
+  el.style.setProperty('left', '0', 'important');
+  el.style.setProperty('right', '0', 'important');
+  el.style.setProperty('bottom', '0', 'important');
+  
   el.setAttribute('aria-hidden','false');
   document.body.style.overflow = 'hidden';
 }
@@ -1577,15 +1589,6 @@ function closeModal(id){
   el.style.display = 'none';
   el.setAttribute('aria-hidden','true');
   document.body.style.overflow = '';
-}
-
-// Spezielle Funktionen für das Packlisten-Modal
-function openPackingModal(){
-  openModal('packingModal');
-}
-
-function closePackingModal(){
-  closeModal('packingModal');
 }
 
 function saveCustom(){
@@ -1699,5 +1702,3 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
-
-
