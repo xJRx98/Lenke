@@ -896,7 +896,7 @@
         </ul>
 
         <div style="margin-top:16px; display:flex; gap:8px; flex-wrap:wrap">
-          <button class="btn secondary" onclick="openPackingModal()" style="flex:1; min-width:120px">📋 Reisecheckliste</button>
+          <button class="btn secondary" onclick="openModal('packingModal')" style="flex:1; min-width:120px">📋 Reisecheckliste</button>
           <a class="btn ghost" href="https://www.visitlondon.com" target="_blank" style="flex:1; min-width:120px">🔍 Mehr</a>
         </div>
       </aside>
@@ -914,13 +914,13 @@
       <main class="card" aria-labelledby="itineraryHeading">
         <h2 id="itineraryHeading">Reiseverlauf</h2>
         <p class="muted">Mögliches Programm</p>
-        <ol class="itinerary" style="margin-top:12px">
+        <ul class="itinerary" style="margin-top:12px">
           <li><strong>Tag 1:</strong> Ankunft</li>
           <li><strong>Tag 2:</strong> Tower of London & Afternoon Tea</li>
           <li><strong>Tag 3:</strong> British Museum & West End Theater</li>
           <li><strong>Tag 4:</strong> Camden Market & Kulinarische Tour</li>
           <li><strong>Tag 5:</strong> Buckingham Palace & Abreise</li>
-        </ol>
+        </ul>
       </main>
 
        
@@ -1447,7 +1447,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- PACKING MODAL (mit korrigierter ID) -->
   <div id="packingModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal">
-      <button class="close" onclick="closePackingModal()">✕</button>
+      <button class="close" onclick="closeModal('packinModal')">✕</button>
       <h3>Reisecheckliste</h3>
       <ul style="margin-top:8px">
         <li>Reisepass + Personalausweis</li>
@@ -1456,7 +1456,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <li>Krankenversicherungsnachweis</li>
       </ul>
       <div class="actions">
-        <button class="btn primary" onclick="closePackingModal()">OK</button>
+        <button class="btn primary" onclick="closeModal('packingModal')">OK</button>
       </div>
     </div>
   </div>
@@ -1689,3 +1689,4 @@ document.addEventListener('keydown', function(e){
 
 </body>
 </html>
+
